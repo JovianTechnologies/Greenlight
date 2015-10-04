@@ -28,9 +28,10 @@ label {
 .data-log {
     background: rgba(102, 102, 102, .7);
     border-radius: 5px;
-    height: 200px;
+    height: 100px;
     margin-top: 50px;
     margin-bottom: 20px;
+    overflow-y: scroll;
 }
 
 .log-header {
