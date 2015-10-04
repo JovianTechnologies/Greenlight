@@ -13,6 +13,7 @@ body {
 
 #sidebar {
     height: 95%;
+    padding-top: 10px;
     top: 5%;
     width: 15%;
     background: rgba(60, 69, 77, .9);
