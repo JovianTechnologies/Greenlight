@@ -23,6 +23,7 @@ body {
 }
 
 .content {
+    overflow-y: scroll; 
     left: 15%;
     padding: 0;
     margin: 0;

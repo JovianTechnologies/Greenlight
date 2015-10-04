@@ -19,71 +19,74 @@
 
 </head>
 <body>
-<div id="header" class="header navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <img class="logo navbar-brand" src="/Content/images/Greenlight Logo White.png"/>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown navbar-user">
-                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                    @Html.Encode(User.Identity.Name)<b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-<div id="sidebar" class="sidebar">
-    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;">
-        <div style="overflow: hidden; width: auto;">
-            <ul class="nav" style="margin-top: 10px;">
-                <li id="homeLink">
-                    <a href="../home/">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-link">Home</span>
+<div class="page-sidebar-fixed">
+    <div id="header" class="header navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img class="logo navbar-brand" src="/Content/images/Greenlight Logo White.png" />
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown navbar-user">
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        @Html.Encode(User.Identity.Name)<b class="caret"></b>
                     </a>
-                </li>
-                <li id="captureLink">
-                    <a href="../capture/">
-                        <i class="fa fa-upload fa-2x"></i>
-                        <span class="nav-link">Capture Data</span>
-                    </a>
-                </li>
-                <li id="viewDataLink">
-                    <a href="../viewdata/">
-                        <i class="fa fa-download fa-2x"></i>
-                        <span class="nav-link">View and Manage</span>
-                    </a>
-                </li>
-                <li id="correctDataLink">
-                    <a href="../correctdata/">
-                        <i class="fa fa-pencil fa-2x"></i>
-                        <span class="nav-link">Correct Data</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-area-chart fa-2x"></i>
-                        <span class="nav-link">View Reports</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-line-chart fa-2x"></i>
-                        <span class="nav-link">Custom Reports</span>
-                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </div>
+    <div id="sidebar" class="sidebar">
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto;">
+            <div style="overflow: hidden; width: auto;">
+                <ul class="nav" style="margin-top: 10px;">
+                    <li id="homeLink">
+                        <a href="../home/">
+                            <i class="fa fa-home fa-2x"></i>
+                            <span class="nav-link">Home</span>
+                        </a>
+                    </li>
+                    <li id="captureLink">
+                        <a href="../capture/">
+                            <i class="fa fa-upload fa-2x"></i>
+                            <span class="nav-link">Capture Data</span>
+                        </a>
+                    </li>
+                    <li id="viewDataLink">
+                        <a href="../viewdata/">
+                            <i class="fa fa-download fa-2x"></i>
+                            <span class="nav-link">View and Manage</span>
+                        </a>
+                    </li>
+                    <li id="correctDataLink">
+                        <a href="../correctdata/">
+                            <i class="fa fa-pencil fa-2x"></i>
+                            <span class="nav-link">Correct Data</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-area-chart fa-2x"></i>
+                            <span class="nav-link">View Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-line-chart fa-2x"></i>
+                            <span class="nav-link">Custom Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="content" class="content">
+        @RenderBody()
+    </div>
 </div>
 
-<div class="content">
-    @RenderBody()
-</div>
 
 
 

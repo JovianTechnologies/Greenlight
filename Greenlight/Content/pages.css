@@ -30,6 +30,7 @@ label {
     border-radius: 5px;
     height: 200px;
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .log-header {
@@ -42,6 +43,7 @@ label {
 .errors {
     padding: 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
     background-color: lightpink;
     color: red;
     font-size: medium;
