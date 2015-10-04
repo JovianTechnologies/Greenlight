@@ -1,0 +1,63 @@
+﻿@using System.Web.UI.WebControls
+@model Greenlight.Models.User
+
+@{
+    ViewBag.Title = "";
+    Layout = null;
+}
+<html>
+<head>
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/login.css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/Scripts/lodash.js")
+    @Scripts.Render("~/Scripts/login.js")
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right login-area">
+                @using (Html.BeginForm("Login", "User", FormMethod.Post, new {@class = "form-inline"}))
+                {
+                    <div class="form-group ">
+                        @Html.TextBoxFor(u => u.Username, new {placeholder = "Username", @class = "form-control login-field"})
+                        @Html.ValidationMessageFor(u => u.Username)
+
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(u => u.Password, new {placeholder = "Password", @class = "form-control login-field", type = "password"})
+                        @Html.ValidationMessageFor(u => u.Password)
+                    </div>
+                    <input class="btn btn-success login-btn" type="submit" value="Log In"/>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right error-messages-continer">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <ul id="errorMessages">
+                        
+                    </ul>
+                    <script>
+                        loginError();
+                    </script>
+                }    
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="image-container text-center">
+    <img src="../../Content/images/Greenlight_Full.png"/>
+</div>
+</body>
+</html>
+

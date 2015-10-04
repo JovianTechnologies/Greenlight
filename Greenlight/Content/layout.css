@@ -1,0 +1,33 @@
+﻿
+body {
+    background: url("images/Greenwave.png") bottom fixed no-repeat;
+    background-size: 100% 25%;
+    position: relative;
+
+}
+
+#header {
+    border-bottom: darkgreen 1px solid;
+    height: 5%;
+}
+
+#sidebar {
+    height: 95%;
+    top: 5%;
+    width: 15%;
+    background: rgba(60, 69, 77, .9);
+}
+
+.nav-link {
+    font-size: larger;
+}
+
+.content {
+    left: 15%;
+    padding: 0;
+    margin: 0;
+    top: -2%;
+    width: 85%;
+    overflow: hidden;
+}
+

@@ -1,0 +1,43 @@
+﻿body {
+    background: url("images/Greenwave.png") bottom fixed no-repeat;
+    background-size: 100% 25%;
+    position: relative;
+}
+
+.login-area {
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.login-field {
+    width: 300px !important;
+}
+
+.login-btn {
+    vertical-align: top;
+    width: 100px;
+    background-color: #42BB42;
+    border-color: #42BB42;
+}
+
+.error-messages-continer {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.image-container {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+}
+
+ textarea.input-validation-error {
+      border-color: red;
+     
+ }
+
+ .field-validation-error{ display: none}
+ .error{ border: 1px solid red; }

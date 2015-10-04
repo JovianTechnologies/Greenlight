@@ -1,0 +1,60 @@
+﻿.page-header {
+    color: darkgreen;
+    font-size: x-large;
+    font-weight: bold;
+    
+    margin: 10px 10px;
+}
+
+.page-header-container {
+    border-bottom: 1px solid darkgreen;
+    margin-bottom: 20px;
+}
+
+label {
+    color: darkgreen;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.time-period {
+    cursor: pointer;
+}
+
+.time-period-active {
+    background-color: #1ABC9C !important;
+}
+
+.data-log {
+    background: rgba(102, 102, 102, .7);
+    border-radius: 5px;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.log-header {
+    margin-left: 5px;
+    font-size: larger;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.errors {
+    padding: 10px;
+    margin-top: 20px;
+    background-color: lightpink;
+    color: red;
+    font-size: medium;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.error-label {
+    margin-left: 10px;
+    text-decoration: underline;
+    font-size: large;
+}
+
+.no-show {
+    display: none;
+}

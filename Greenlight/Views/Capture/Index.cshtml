@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/jquery-ui.min.css")
+@Styles.Render("~/Content/pages.css")
+@Styles.Render("~/Content/capture.css")
+
+@Scripts.Render("~/Scripts/jquery-ui.min.js")
+@Scripts.Render("~/Scripts/jquery.signalR-2.2.0.js")
+@Scripts.Render("~/signalr/hubs")
+@Scripts.Render("~/Scripts/lodash.js")
+@Scripts.Render("~/Scripts/capture.js")
+
+<div class="page-header-container">
+    <h1 class="page-header"> Capture Data</h1>
+</div>
+
+<div class="container-fluid">
+    <label>Select a Time Period</label>
+    <div class="row">
+        
+        <div class="col-lg-2">
+            <div id="weekly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Weekly</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div id="monthly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Monthly</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div id="quarterly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Quaterly</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div id="yearly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Yearly</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <label for="fileName">File Name</label>
+            <input type="text" id="fileNameProxy" name="fileNameProxy" class="form-control capture-form-input" placeholder="File Name"/>
+
+            <form onsubmit=" return false; " id="captureForm" name="captureForm">
+                <div class="form-group">
+                    <input type="file" id="fileName" name="fileName" style="display: none" placeholder="File Name"/>
+
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label for="progressbar">Capture Progress</label>
+                        <div id="result" style="font-family: Tahoma; font-size: 0.9em; padding-bottom: 5px"></div>
+                        <div id="progressbar" class="ui-progressbar capture-form-input"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-danger btn-lg pull-right" id="cancelBtn" type="submit" disabled="disabled">Cancel</button>
+                <button class="btn btn-success btn-lg pull-right" id="captureBtn" type="submit">Capture</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div id="errors" class="errors no-show">
+                <span class="error-label">Errors</span>
+                <ul id="errorList" class="error-list error-content"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="data-log no-show">
+                <span class="log-header">Data Log:</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿.ui-widget-header{
+    border: 1px solid darkgreen;
+        background: #00F900  50% 50% repeat-x;
+}
+
+#captureBtn {
+    background-color: #008F00;
+    border-color: #001D00;
+    margin-right: 5px;
+}
+
+.capture-form-input {
+    height: 50px;
+    max-width: 50000px !important;
+    width: 100%;
+}
+
+.ui-widget-content {
+    border: 2px solid #bec3c6;
+}
+
+
+
