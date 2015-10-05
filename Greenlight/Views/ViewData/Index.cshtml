@@ -1,7 +1,144 @@
-﻿
+﻿@Styles.Render("~/Content/pages.css")
+@Styles.Render("~/Content/viewdata.css")
+
+@Scripts.Render("~/Scripts/jquery.fixedheadertable.min.js")
+@Scripts.Render("~/Scripts/lodash.js")
+@Scripts.Render("~/Scripts/pages.js")
+@Scripts.Render("~/Scripts/viewdata.js")
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="page-header-container">
+    <h1 class="page-header">View and Manage Data</h1>
+</div>
 
+<div class="container-fluid">
+    <label>Select a Time Period</label>
+    <div class="row">
+
+        <div class="col-lg-2">
+            <div id="weekly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Weekly</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div id="monthly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Monthly</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div id="quarterly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Quarterly</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div id="yearly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Yearly</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div id="all" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">All</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <label>File Name</label>
+
+            <form onsubmit=" return false; ">
+                <div class="form-group">
+                    <input type="text" id="fileNameInput" class="form-control site-form-input" placeholder="File Name"/>
+                </div>
+                <button class="btn btn-danger btn-lg pull-right" id="cancelBtn" type="submit">Cancel</button>
+                <button class="btn btn-lg pull-right success-btn btn-margin btn-success" id="searchBtn" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel">
+                <div class="panel-heading">
+                    <label>Search Results</label>
+                </div>
+                <div id="searchTableContainer" class="no-show table-responsive">
+                    <table id="searchTable" class="table table-bordered table-td-valign-middle">
+                        <thead>
+                        <tr class="inverse">
+                            <th>Data Load ID</th>
+                            <th>Daata File Name</th>
+                            <th>Client ID</th>
+                            <th>Entity ID</th>
+                            <th>Insert Date</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>2015-04-05_XYZBANK_1</td>
+                            <td>XYZ BANK</td>
+                            <td>1</td>
+                            <td>2015-04-05</td>
+                            <td><input type="checkbox"/></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2015-04-05_XYZBANK_1</td>
+                            <td>XYZ BANK</td>
+                            <td>1</td>
+                            <td>2015-04-05</td>
+                            <td><input type="checkbox"/></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2015-06-05_XYZBANK_2</td>
+                            <td>XYZ BANK</td>
+                            <td>2</td>
+                            <td>2015-06-05</td>
+                            <td><input type="checkbox"/></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>2015-07-05_XYZBANK_3</td>
+                            <td>XYZ BANK</td>
+                            <td>3</td>
+                            <td>2015-07-05</td>
+                            <td><input type="checkbox"/></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>2015-06-05_XYZBANK_1</td>
+                            <td>XYZ BANK</td>
+                            <td>1</td>
+                            <td>2015-06-05</td>
+                            <td><input type="checkbox"/></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>2015-04-05_XYZBANK_1</td>
+                            <td>XYZ BANK</td>
+                            <td>1</td>
+                            <td>2015-04-05</td>
+                            <td><input type="checkbox"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <button id="deleteBtn" class="btn btn-lg btn-danger pull-right no-show">Delete</button>
+                <button id="viewBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin no-show" disabled="disabled">View</button>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="data-log no-show">
+                <span class="log-header">Data Log:</span>
+            </div>
+        </div>
+    </div>
+</div>

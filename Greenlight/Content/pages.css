@@ -11,6 +11,12 @@
     margin-bottom: 20px;
 }
 
+.site-form-input {
+    height: 50px;
+    max-width: 50000px !important;
+    width: 100%;
+}
+
 label {
     color: darkgreen;
     font-size: larger;
@@ -60,4 +66,27 @@ label {
 
 .no-show {
     display: none;
+}
+
+.table-responsive {
+    overflow-y: scroll;
+    height: 200px;
+}
+
+.success-btn {
+    background-color: #008F00 !important;
+    border-color: #001D00 !important;
+    color: white;
+}
+
+.success-btn:hover {
+    background-color: darkgreen !important;
+}
+
+.btn-margin {
+    margin-right: 5px;
+}
+
+.row-selected {
+    background-color: palegoldenrod !important;
 }

@@ -15,17 +15,17 @@ body {
     height: 95%;
     padding-top: 10px;
     top: 5%;
-    width: 15%;
+    width: 16%;
     background: rgba(60, 69, 77, .9);
 }
 
 .nav-link {
-    font-size: larger;
+    font-size: medium;
 }
 
 .content {
     overflow-y: scroll; 
-    left: 15%;
+    left: 16%;
     padding: 0;
     margin: 0;
     top: -2%;
