@@ -12,7 +12,7 @@
 }
 
 .site-form-input {
-    height: 50px;
+    height: 40px;
     max-width: 50000px !important;
     width: 100%;
 }
@@ -25,6 +25,7 @@ label {
 
 .time-period {
     cursor: pointer;
+    padding: 12px;
 }
 
 .time-period-active {
@@ -89,4 +90,12 @@ label {
 
 .row-selected {
     background-color: palegoldenrod !important;
+}
+
+.time-period-row {
+    height: 20px !important;
+}
+
+.btn {
+    padding: 8px;
 }

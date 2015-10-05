@@ -24,6 +24,7 @@ body {
 }
 
 .content {
+    position: absolute;
     overflow-y: scroll; 
     left: 16%;
     padding: 0;
