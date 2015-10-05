@@ -1,14 +1,14 @@
 ﻿
 body {
     
-    background: url("images/Greenwave.png") bottom fixed no-repeat;
+    background: url("images/GreenwaveTransparent.jpg") bottom fixed no-repeat;
+    background-color: #F2F2EE;
     background-size: 100% 25%;
     position: relative;
    
 }
 
-.body-div {
-    background: rgba(243, 243, 244, .6);
+.body-div {;
     height: 100%;
 }
 

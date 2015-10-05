@@ -1,4 +1,5 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
+    if(window)
     document.timePeriod;
     //functionality for time period buttons
     $(".time-period").on('click', function () {
