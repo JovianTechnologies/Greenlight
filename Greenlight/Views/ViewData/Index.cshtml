@@ -17,66 +17,62 @@
 <div class="container-fluid">
     <label>Select a Time Period</label>
     <div class="row">
-
-        <div class="col-lg-2">
+        <div class="col-md-2">
             <div id="weekly" class="time-period widget widget-stat bg-inverse text-white">
                 <div class="widget-stat-text">Weekly</div>
             </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-md-2">
             <div id="monthly" class="time-period widget widget-stat bg-inverse text-white">
                 <div class="widget-stat-text">Monthly</div>
             </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-md-2">
             <div id="quarterly" class="time-period widget widget-stat bg-inverse text-white">
                 <div class="widget-stat-text">Quarterly</div>
             </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-md-2">
             <div id="yearly" class="time-period widget widget-stat bg-inverse text-white">
                 <div class="widget-stat-text">Yearly</div>
             </div>
         </div>
-        <div class="col-lg-2">
+        <div class="col-md-2">
             <div id="all" class="time-period widget widget-stat bg-inverse text-white">
                 <div class="widget-stat-text">All</div>
             </div>
         </div>
     </div>
-    <label>File Name</label>
-    <div class="row">
-        <div class="col-lg-4">
-            
-            <input type="text" id="fileNameInput" class="form-control site-form-input" placeholder="File Name"/>
-        </div>
-        <div class="col-lg-2">
-            <button class="btn btn-lg success-btn btn-margin btn-success pull" id="searchBtn" type="submit">
-                <i class="fa fa-search"></i>
-                Search
-            </button>
-            <button class="btn btn-danger btn-lg" id="cancelBtn" type="submit">
-                <i class="fa fa-times"></i>
-                Cancel
-            </button>
-            
-        </div>
-        <div class="col-lg-1">
-            
+    <div class="section-container section-with-top-border">
+        <label>File Name</label>
+        <div class="row">
+            <div class="col-lg-4">
+                <input type="text" id="fileNameInput" class="form-control site-form-input" placeholder="File Name" />
+            </div>
+            <div class="col-lg-3">
+                <button class="btn btn-lg success-btn btn-margin btn-success" id="searchBtn" type="submit">
+                    <i class="fa fa-search"></i>
+                    Search
+                </button>
+                <button class="btn btn-danger btn-lg" id="cancelBtn" type="submit">
+                    <i class="fa fa-times"></i>
+                    Cancel
+                </button>
+
+            </div>
         </div>
     </div>
-    <div class="row">
+    
+    <div class="row section-container section-with-top-border">
         <div class="col-md-8">
-            <div class="panel">
-
-                
+            <div class="panel panel-grey">
                 <div class="panel-heading">
-                    <label>Search Results</label>
+                    Search Results
                 </div>
                 <div id="searchTableContainer" class="no-show table-responsive">
                     <table id="searchTable" class="table table-bordered table-td-valign-middle">
                         <thead>
-                        <tr class="inverse">
+                        <tr class="grey">
                             <th>Data Load ID</th>
                             <th>Daata File Name</th>
                             <th>Client ID</th>

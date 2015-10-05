@@ -51,7 +51,7 @@
             errors.push("A file must be selected.");
         }
 
-        if (timePeriod === undefined) {
+        if (typeof timePeriod === 'undefined') {
             errors.push("A time period must be selected");
         }
 
