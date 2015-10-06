@@ -101,3 +101,14 @@ label {
 .btn {
     padding: 8px;
 }
+
+.modal-header {
+     background-color: #519E59; 
+     border-top-left-radius: 5px; 
+     border-top-right-radius: 5px;
+    
+}
+
+.modal-title {
+    color: white;
+}

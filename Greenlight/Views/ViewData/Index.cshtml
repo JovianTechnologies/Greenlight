@@ -4,6 +4,7 @@
 @Scripts.Render("~/Scripts/jquery.fixedheadertable.min.js")
 @Scripts.Render("~/Scripts/lodash.js")
 @Scripts.Render("~/Scripts/pages.js")
+@Scripts.Render("~/Scripts/managedata.js")
 @Scripts.Render("~/Scripts/viewdata.js")
 
 @{
@@ -64,7 +65,7 @@
     </div>
     
     <div class="row section-container section-with-top-border">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="panel panel-grey">
                 <div class="panel-heading">
                     Search Results
@@ -72,64 +73,24 @@
                 <div id="searchTableContainer" class="no-show table-responsive">
                     <table id="searchTable" class="table table-bordered table-td-valign-middle">
                         <thead>
-                        <tr class="grey">
-                            <th>Data Load ID</th>
-                            <th>Daata File Name</th>
-                            <th>Client ID</th>
-                            <th>Entity ID</th>
-                            <th>Insert Date</th>
-                            <th>Delete</th>
-                        </tr>
+                            <tr class="grey">
+                                <th>Data Load ID</th>
+                                <th>Daata File Name</th>
+                                <th>Client ID</th>
+                                <th>Entity ID</th>
+                                <th>Insert Date</th>
+                                <th>Delete</th>
+                            </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>2015-04-05_XYZBANK_1</td>
-                            <td>XYZ BANK</td>
-                            <td>1</td>
-                            <td>2015-04-05</td>
-                            <td><input type="checkbox"/></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2015-04-05_XYZBANK_1</td>
-                            <td>XYZ BANK</td>
-                            <td>1</td>
-                            <td>2015-04-05</td>
-                            <td><input type="checkbox"/></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2015-06-05_XYZBANK_2</td>
-                            <td>XYZ BANK</td>
-                            <td>2</td>
-                            <td>2015-06-05</td>
-                            <td><input type="checkbox"/></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2015-07-05_XYZBANK_3</td>
-                            <td>XYZ BANK</td>
-                            <td>3</td>
-                            <td>2015-07-05</td>
-                            <td><input type="checkbox"/></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>2015-06-05_XYZBANK_1</td>
-                            <td>XYZ BANK</td>
-                            <td>1</td>
-                            <td>2015-06-05</td>
-                            <td><input type="checkbox"/></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>2015-04-05_XYZBANK_1</td>
-                            <td>XYZ BANK</td>
-                            <td>1</td>
-                            <td>2015-04-05</td>
-                            <td><input type="checkbox"/></td>
-                        </tr>
+                        <tbody id="files">
+                            <tr id="files" rv-each-file="filesList">
+                                <td>{ file.Id }</td>
+                                <td>{file.DataFileName}</td>
+                                <td>{ file.ClientId}</td>
+                                <td>{ file.EntityId }</td>
+                                <td><span rv-text="file.InsertDate | date"></span></td>
+                                <td><input type="checkbox" rv-checked="file.delete" /></td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -138,7 +99,8 @@
                     <i class="fa fa-minus"></i>
                     Delete
                 </button>
-                <button id="viewBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin no-show" disabled="disabled">
+                <button id="viewBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin no-show" rv-disabled="selectedRow | null"
+                        data-toggle="modal" data-target="#myModal">
                     <i class="fa fa-eye"></i>
                     View
                 </button>
@@ -152,5 +114,60 @@
                 <span class="log-header">Data Log:</span>
             </div>
         </div>
+    </div>
+</div>
+<!--View Modal-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width:1000px; margin-left: -200px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="modal-title" class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-grey">
+                    <div class="panel-heading">
+                        Search Results
+                    </div>
+                    <div id="searchTableContainer" class="table-responsive">
+                        <table id="searchTable" class="table table-bordered table-td-valign-middle">
+                            <thead>
+                                <tr class="grey">
+                                    <th>R0000</th>
+                                    <th>M0000</th>
+                                    <th>M0001</th>
+                                    <th>M0002</th>
+                                    <th>M0003</th>
+                                    <th>M0004</th>
+                                    <th>M0005</th>
+                                    <th>M0006</th>
+                                    <th>E0004</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="data" rv-each-data="fileData">
+                                    <td>{ data.R0000 }</td>
+                                    <td>{ data.M0000 }</td>
+                                    <td>{ data.M0001 }</td>
+                                    <td>{ data.M0002 | date }</td>
+                                    <td>{ data.M0003 }</td>
+                                    <td>{ data.M0004 }</td>
+                                    <td>{ data.M0005 }</td>
+                                    <td>{ data.M0006 }</td>
+                                    <td>{ data.E0004 }</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
