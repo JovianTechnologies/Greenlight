@@ -277,6 +277,7 @@
     <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\lodash.js" />
     <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\managedata.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pages.js" />
     <Content Include="Scripts\respond.js" />
