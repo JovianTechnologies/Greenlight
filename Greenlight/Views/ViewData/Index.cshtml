@@ -152,28 +152,16 @@
                             <table id="searchTable" class="table table-bordered table-td-valign-middle">
                                 <thead>
                                     <tr class="grey">
-                                        <th>R0000</th>
-                                        <th>M0000</th>
-                                        <th>M0001</th>
-                                        <th>M0002</th>
-                                        <th>M0003</th>
-                                        <th>M0004</th>
-                                        <th>M0005</th>
-                                        <th>M0006</th>
-                                        <th>E0004</th>
+                                        <th rv-each-setting="userSettings.headers">
+                                            { setting }
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr id="data" rv-each-data="fileData">
-                                        <td>{ data.R0000 }</td>
-                                        <td>{ data.M0000 }</td>
-                                        <td>{ data.M0001 }</td>
-                                        <td>{ data.M0002 | date }</td>
-                                        <td>{ data.M0003 }</td>
-                                        <td>{ data.M0004 }</td>
-                                        <td>{ data.M0005 }</td>
-                                        <td>{ data.M0006 }</td>
-                                        <td>{ data.E0004 }</td>
+                                        <td rv-each-dataitem="data | selectedColumns | objectToArrayOfObjects">
+                                            { dataitem }
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

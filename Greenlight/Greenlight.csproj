@@ -218,6 +218,7 @@
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\settings.css" />
     <Content Include="Content\style.min.css" />
     <Content Include="Content\viewdata.css" />
     <Content Include="favicon.ico" />
@@ -283,6 +284,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\rivets.bundled.min.js" />
+    <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\ui.core.js" />
     <Content Include="Scripts\ui.progressbar.js" />
     <Content Include="Scripts\viewdata.js" />
