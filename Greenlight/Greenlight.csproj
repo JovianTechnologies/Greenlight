@@ -326,6 +326,7 @@
     <Content Include="Views\Capture\Index.cshtml" />
     <Content Include="Views\CorrectData\Index.cshtml" />
     <Content Include="Views\ViewData\Index.cshtml" />
+    <None Include="Views\ViewData\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -83,7 +83,7 @@
                             </tr>
                         </thead>
                         <tbody id="files">
-                            <tr id="files" rv-each-file="filesList">
+                            <tr rv-each-file="filesList">
                                 <td>{ file.Id }</td>
                                 <td>{file.DataFileName}</td>
                                 <td>{ file.ClientId}</td>
@@ -124,7 +124,7 @@
         <div class="modal-content" style="width:1000px; margin-left: -200px">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 id="modal-title" class="modal-title">Modal Header</h4>
+                <span rv-text="selectedfilename"></span><h4 id="modal-title" class="modal-title" rv-text="selectedFileName"></h4>
             </div>
             <div class="modal-body">
                 <div class="row">

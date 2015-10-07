@@ -10,7 +10,7 @@
         $("#captureLink").addClass("active");
     }else if (window.location.pathname.indexOf("viewdata") >= 0) {
         $("#viewDataLink").addClass("active");
-        if (window.location.pathname.indexOf("#") >= 0) {
+        if (window.location.pathname.indexOf("settings") >= 0) {
             $("#manage").addClass("active");
         } else {
             $("#view").addClass("active");

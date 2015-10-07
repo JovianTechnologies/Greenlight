@@ -13,5 +13,11 @@ namespace Greenlight.Controllers
         {
             return View();
         }
+
+        //settings
+        public ActionResult Settings()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,54 @@
+﻿
+@Styles.Render("~/Content/pages.css")
+@Styles.Render("~/Content/settings.css")
+
+@Scripts.Render("~/Scripts/lodash.js")
+@Scripts.Render("~/Scripts/settings.js")
+
+
+@{
+    ViewBag.Title = "title";
+}
+
+<div class="page-header-container">
+    <h1 class="page-header">User Settings</h1>
+</div>
+
+<div class="container-fluid">
+        <div class="col-sm-8">
+            <div class="panel panel-grey">
+                <div class="panel-heading">
+                    Search Results
+                </div>
+                <div id="searchTableContainer" class="table-responsive">
+                    <table id="searchTable" class="table table-bordered table-td-valign-middle">
+                        <thead>
+                            <tr class="grey">
+                                <th>Number</th>
+                                <th>Header</th>
+                                <th>Description Header</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody id="files">
+                            <tr rv-each-config="dataConfigurations">
+                                <td>{ config.Number }</td>
+                                <td>{ config.Header}</td>
+                                <td>{ config.Description}</td>
+                                <td><input type="checkbox" rv-checked="config.isSelected"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <button id="cancelBtn" class="btn btn-lg btn-danger pull-right">
+                    <i class="fa fa-times"></i>
+                    Cancel
+                </button>
+                <button id="saveBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin">
+                    <i class="fa fa-floppy-o"></i>
+                    Save
+                </button>
+            </div>
+        </div>
+</div>

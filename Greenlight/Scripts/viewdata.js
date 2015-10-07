@@ -10,12 +10,22 @@
 { Id: 7, "LoadYearMonth": 201412, "InsertDate": "\/Date(1444041150407)\/", "InsertName": "info@ibis-management.com", "UpdateDate": "\/Date(-62135582400000)\/", "UpdateName": null, "Bank_Id": 0, "TypeOfPeriod_Id": 2, "BankLoadStatus": 1, "DataFileName": "2014-12-01_XYZBANK_9.csv", "NumOfRecords": 1072, "ClientId": "XYZ Bank Curacao", delete: false },
 { Id: 32, "LoadYearMonth": 201412, "InsertDate": "\/Date(1444041150407)\/", "InsertName": "info@ibis-management.com", "UpdateDate": "\/Date(-62135582400000)\/", "UpdateName": null, "Bank_Id": 0, "TypeOfPeriod_Id": 2, "BankLoadStatus": 1, "DataFileName": "2014-12-01_XYZBANK_10.csv", "NumOfRecords": 1072, "ClientId": "XYZ Bank Curacao", delete: false }];
 
+if (sessionStorage.getItem("configData") == null) {
+    var dataObject = { headers: [] }
+    sessionStorage.setItem("configData", JSON.stringify(dataObject));
+}
+
 var model = {
     disabled: true,
     selectedRow: null,
     filesList: _.sortBy(files, function(file) { return file.Id; }),
-    fileData: fileData
+    fileData: fileData,
+    selectedFileName: "Hi",
+    userSettings: sessionStorage.getItem("configData")
 };
+
+
+
 
 rivets.formatters.date = function (value) {
     var millis = value.substring(value.indexOf("(") + 1, value.indexOf(")"));
@@ -53,10 +63,8 @@ $(document).ready(function () {
         $(this).addClass("row-selected");
         $(this).siblings().removeClass("row-selected");
         model.selectedRow = this;
-    });
-
-    $("#viewBtn").on('click', function () {
-        $("#modal-title").html(selectedRow.children[1].innerHTML);
+        var row = this.rowIndex - 1;
+        model.selectedFileName = model.filesList[row].DataFileName;
     });
 
     $('#deleteBtn').on('click', function() {
