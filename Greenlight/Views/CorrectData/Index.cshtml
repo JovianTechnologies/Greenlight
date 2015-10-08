@@ -1,7 +1,125 @@
-﻿
+﻿@Styles.Render("~/Content/pages.css")
+
+
+@Scripts.Render("~/Scripts/pages.js")
+@Scripts.Render("~/Scripts/correctdata.js")
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="page-header-container">
+    <h1 class="page-header">Correct Data</h1>
+</div>
 
+<div class="container-fluid ">
+    <div class="section-container section-with-bottom-border">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-inverse">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Upload A File
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form onsubmit="return false;">
+                            <div class="form-group">
+                                <label for="fileNameInput">File Name</label>
+                                <input type="text" id="fileNameInput" class="form-control site-form-input" placeholder="File Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="rowIdInput">Row ID</label>
+                                <input type="text" id="rowIdInput" class="form-control site-form-input" placeholder="Row ID" />
+                            </div>
+                            <div class="form-group">
+                                <label for="dataSearchInput">Data Search</label>
+                                <input type="text" id="dataSearchInput" class="form-control site-form-input" placeholder="File Name" />
+                            </div>
+                            
+                            
+                            <button class="btn btn-danger btn-lg pull-right btn-margin" id="cancelBtn" type="reset">
+                                <i class="fa fa-times"></i>
+                                Cancel
+                            </button>
+                            <button class="btn btn-warning btn-lg pull-right btn-margin" id="clearBtn" type="reset">
+                                <i class="fa fa-minus"></i>
+                                Clear
+                            </button>
+                            <button class="btn btn-lg success-btn btn-margin btn-success pull-right" id="searchBtn" type="submit">
+                                <i class="fa fa-search"></i>
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div id="correctDataModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="width:1000px; margin-left: -200px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 id="modal-title" class="modal-title">Correction Form</h4>
+            </div>
+            <div id="modalBody" class="modal-body modal-body-scrollable">
+                <div class="panel panel-grey">
+                    <div class="panel-heading">
+                        File Name: XYZBANK201510_1_1
+                    </div>
+                    <div id="searchTableContainer" class="table-responsive">
+                        <table id="searchTable" class="table table-bordered table-td-valign-middle">
+                            <thead>
+                                <tr class="grey">
+                                    <th rv-each-col="columnNames">
+                                        { col }
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="data" rv-each-data="correctData">
+                                    <td rv-each-dataitem="data |  objectToArrayOfObjects" rv-text="dataitem.value">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <input rv-value="model.test.val"/>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="correctionForm" onsubmit="return false;">
+                                <div class="row">
+                                    <div class="col-md-4"><label>Row Id</label></div>
+                                    <div class="col-md-4"><label>Data Value To Modify</label></div>
+                                    <div class="col-md-4"><label>New Entry</label></div>
+                                </div>
+                            </form>
+                            <button id="addRow" class="btn btn-primary" style="width: 36px; height: 36px; margin-top: 10px">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success success-btn" id="correctModalBtn">
+                    <i class="fa fa-pencil"></i>
+                    Match Data
+                </button>
+                <button type="button" class="btn btn-warning" id="resetModalBtn">
+                    <i class="fa fa-minus"></i>
+                    ClearForm
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelModalBtn">
+                    <i class="fa fa-times"></i>
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

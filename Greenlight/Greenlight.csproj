@@ -190,6 +190,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\capture.css" />
+    <Content Include="Content\correctdata.css" />
     <Content Include="Content\font-awesome-4.4.0\css\font-awesome.css" />
     <Content Include="Content\font-awesome-4.4.0\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
@@ -264,6 +265,7 @@
     <None Include="Properties\PublishProfiles\Greenlight.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\capture.js" />
+    <Content Include="Scripts\correctdata.js" />
     <Content Include="Scripts\demo.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -283,13 +285,16 @@
     <Content Include="Scripts\managedata.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pages.js" />
+    <Content Include="Scripts\prettyPrompt.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\rivets.bundled.min.js" />
+    <Content Include="Scripts\rivetswatchadapter.js" />
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\ui.core.js" />
     <Content Include="Scripts\ui.progressbar.js" />
     <Content Include="Scripts\viewdata.js" />
+    <Content Include="Scripts\watch.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

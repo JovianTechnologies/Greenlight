@@ -112,3 +112,8 @@ label {
 .modal-title {
     color: white;
 }
+
+.modal-body-scrollable {
+    max-height: 420px; 
+    overflow-y: auto; 
+}

@@ -1,11 +1,8 @@
 ﻿@Styles.Render("~/Content/pages.css")
 @Styles.Render("~/Content/viewdata.css")
 
-@Scripts.Render("~/Scripts/jquery.fixedheadertable.min.js")
-@Scripts.Render("~/Scripts/lodash.js")
 @Scripts.Render("~/Scripts/pages.js")
 @Scripts.Render("~/Scripts/managedata.js")
-
 @Scripts.Render("~/Scripts/viewdata.js")
 
 @{
@@ -99,7 +96,7 @@
                 <button id="deleteBtn" class="btn btn-lg btn-danger pull-right no-show">
                     <i class="fa fa-minus"></i>
                     Delete
-                </button>
+                </button>   
                 <button id="viewBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin no-show" rv-disabled="selectedRow | null"
                         data-toggle="modal" data-target="#myModal">
                     <i class="fa fa-eye"></i>
@@ -166,7 +163,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
