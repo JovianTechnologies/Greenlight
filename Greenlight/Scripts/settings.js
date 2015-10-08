@@ -39,9 +39,11 @@ $(document).ready(function () {
             }
         });
         sessionStorage.setItem("configData", JSON.stringify({ headers: selectedItems }));
-
-        var savedPopup = bootbox.confirm(" ", function() {});
-        customModal(savedPopup, false, "Success!", "Settings saved successfully", "#1D9F75", "btn-danger", "fa-check-circle-o");
+        prettyBoot.create({
+            messageTitle: "Success!",
+            message: "Settings saved successfully",
+            iconClass: "fa-check-circle-o"
+        });
     });
 
 
