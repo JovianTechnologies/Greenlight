@@ -33,6 +33,9 @@ rivets.formatters.date = function (value) {
     return date.customFormat("#YYYY#-#MM#-#DD#");
 };
 
+
+//used so that null elements can be evaluated as booleans for rivets attributes
+//such as rv-disabled
 rivets.formatters.null = function (value) {
     return value == null;
 };
@@ -89,16 +92,53 @@ $(document).ready(function () {
         model.selectedFileName = model.filesList[row].DataFileName;
     });
 
-    $('#deleteBtn').on('click', function() {
-        model.filesList = _.filter(model.filesList, function(file) {
-            return !file.delete;
-        });
+    $('#deleteBtn').on('click', function () {
+        var confirmationBox = bootbox.confirm(" ", function(result) {
+            if (result) {
+                model.filesList = _.filter(model.filesList, function(file) {
+                    return !file.delete;
+                });
 
-        if (model.filesList.indexOf(model.selectedRow) == -1) {
-            model.selectedRow = null;
-            $('#files').children().removeClass("row-selected");
-        }
-        
+                if (model.filesList.indexOf(model.selectedRow) == -1) {
+                    model.selectedRow = null;
+                    $('#files').children().removeClass("row-selected");
+                }
+            }
+        });
+        customModal(confirmationBox, true, "DELETE?", "This action cannot be undone", "#E2747E", "btn-danger", "fa-times-circle-o");
+//        var modal = confirmationBox.find('.modal-dialog');
+//        var body = confirmationBox.find(".modal-body");
+//        var footer = confirmationBox.find('.modal-footer');
+//       
+//        modal.css({ "margin-top": "200px", "width": "300px" });
+//
+//        //set body of cormirmation modal
+//        body.css({ "height": "120px", "background-color": "#E2747E", "color": "white", "margin": "0", "border-top-left-radius": "5px", "border-top-right-radius": "5px" });
+//        var span = document.createElement("span");
+//        $(span).addClass("fa fa fa-times-circle-o").css({ "width": "100%", "text-align" : "center", "font-size" : "60px"});
+//        $(body).append($(span));
+//
+//
+//        //set footer of confirmation modal
+//        footer.css({ "margin": "0" });
+//        var confirmButton = footer.find(".btn-primary");
+//        var cancelButton = footer.find(".btn-default");
+//        $(cancelButton).remove();
+//        $(confirmButton).remove();
+//        var messageTitleDiv = document.createElement("div");
+//        $(messageTitleDiv).html("DELETE?");
+//        $(messageTitleDiv).css({ "font-size": "large", "font-weight": "bold", "text-align": "center" });
+//        $(footer).append($(messageTitleDiv));
+//        var messageDiv = document.createElement("div");
+//        $(messageDiv).html("This action cannot be undone")
+//        $(messageDiv).css({ "font-size": "medium", "text-align": "center" });
+//        $(footer).append($(messageDiv));
+//        var deleteBtnDiv = document.createElement("div");
+//        $(deleteBtnDiv).css({ "text-align": "center", "margin-top" : "10px" });
+//        $(confirmButton).removeClass("btn-primary pull-right").addClass("btn-danger text-center").html("Delete");
+//        $(deleteBtnDiv).append($(confirmButton));
+//        $(footer).append($(deleteBtnDiv));
+
 
     });
 
@@ -123,6 +163,8 @@ $(document).ready(function () {
         model.selectedRow = null;
         $('#files').children().removeClass("row-selected");
     }
+
+    
 });
 
 
@@ -145,3 +187,4 @@ Date.prototype.customFormat = function (formatString) {
     ss = (s = this.getSeconds()) < 10 ? ('0' + s) : s;
     return formatString.replace("#hhhh#", hhhh).replace("#hhh#", hhh).replace("#hh#", hh).replace("#h#", h).replace("#mm#", mm).replace("#m#", m).replace("#ss#", ss).replace("#s#", s).replace("#ampm#", ampm).replace("#AMPM#", AMPM);
 };
+

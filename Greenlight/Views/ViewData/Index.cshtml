@@ -5,6 +5,7 @@
 @Scripts.Render("~/Scripts/lodash.js")
 @Scripts.Render("~/Scripts/pages.js")
 @Scripts.Render("~/Scripts/managedata.js")
+
 @Scripts.Render("~/Scripts/viewdata.js")
 
 @{
@@ -159,7 +160,7 @@
                                 </thead>
                                 <tbody>
                                     <tr id="data" rv-each-data="fileData">
-                                        <td rv-each-dataitem="data | selectedColumns | objectToArrayOfObjects">
+                                        <td rv-each-dataitem="data | selectedColumns | objectToArray">
                                             { dataitem }
                                         </td>
                                     </tr>
