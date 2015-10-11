@@ -8,9 +8,12 @@
 var columnNames = Object.keys(correctData[0]);
 model = {
     correctData: correctData,
-    columnNames: columnNames
+    columnNames: columnNames,
+    logData: []
 }
+
 $(document).ready(function () {
+    
     var view = rivets.bind($('body'), model);
 
     appendCorrectionRow();
@@ -35,9 +38,14 @@ $(document).ready(function () {
     });
     $("#correctModalBtn").on("click", function () {
         var inputRows = $(".input-row");
+
+        //used to identify whether or not a row was updated
+        //so that a pop up can be displayed after the for each 
+        //has completed
         var isUpdated = false;
         _.forEach(inputRows, function (row) {
-            var dataRow = _.findWhere(model.correctData, { R0000: $(row.children[0]).children()[0].value });
+            var R0000 = $(row.children[0]).children()[0].value;
+            var dataRow = _.findWhere(model.correctData, { R0000: R0000});
             //check if the row exists
             if (typeof dataRow !== "undefined") {
                 var rowIndex = model.correctData.indexOf(dataRow);
@@ -46,8 +54,16 @@ $(document).ready(function () {
                 if (valueToModify in dataRow) {
                     var newValue = $(row.children[2]).children()[0].value;
                     dataRow[valueToModify] = newValue;
+
+                    //update model
+                    //rivets has issues with updating nested objects
+                    //so the row needs to be cut out and a copied
+                    //row inserted in its place
                     var newRow = $.extend(true, {}, dataRow);
                     model.correctData.splice(rowIndex, 1, newRow);
+                    
+                    //store which data was updated on the model
+                    model.logData.push("Row modified: " + R0000 + ", Data value modified: " + valueToModify + ", New Value: " + newValue);
 
                     isUpdated = true;
                 }
@@ -60,9 +76,13 @@ $(document).ready(function () {
                 message: "Data matched successfully",
                 iconClass: "fa-check-circle-o"
             });
+
+            //clear form
+            $('#correctionForm')[0].reset();
         }
         
     });
+
     $("#resetModalBtn").on("click", function () {
         $('#correctionForm')[0].reset();
     });

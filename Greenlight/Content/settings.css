@@ -1,3 +1,10 @@
 ﻿.table-responsive {
     height: 400px
 }
+
+.button-container {
+    position: absolute;
+    left: 66%;
+    bottom: 4%;
+}
+}

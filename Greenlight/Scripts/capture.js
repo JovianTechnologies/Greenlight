@@ -1,11 +1,12 @@
-﻿$(document).ready(function () {
-    
-    
+﻿var model = {
+    errors: []
+};
 
+$(document).ready(function () {
+    rivets.bind($("body"), model);
 
     //progress bar functionality
     $("#progressbar").progressbar({ value: 0 });
-
     var connectionProxy = $.connection.progressHub;
     connectionProxy.client.updatePage = updateProgress;
     var progressNotifier = $.connection.hub;
@@ -45,33 +46,15 @@
     }
 
     function validate() {
-        $("#errorList").html("");
-        var errors = [];
-        if ($("#fileNameProxy").val() === "") {
-            errors.push("A file must be selected.");
+        if ($("#fileNameProxy").val() === "" && model.errors.indexOf(ErrorType.fileMissingError) === -1) {
+            model.errors.push(ErrorType.fileMissingError);
         }
 
-        if (typeof timePeriod === 'undefined') {
-            errors.push("A time period must be selected");
+        if (typeof timePeriod === 'undefined' && model.errors.indexOf(ErrorType.timePeriodMissingError) === -1) {
+            model.errors.push(ErrorType.timePeriodMissingError);
         }
 
-        _.forEach(errors, function(error) {
-            $("#errorList").append("<li>" + error + "</li>");
-        });
-
-        var isValid = _.isEmpty(errors);
-
-        var errorContainer = $("#errors");
-        if (!isValid) {
-            if($(errorContainer).hasClass("no-show"))
-                $(errorContainer).removeClass("no-show");
-        } else {
-            if (!$(errorContainer).hasClass("no-show"))
-                $(errorContainer).addClass("no-show");
-        }
-
-        return isValid;
+        return _.isEmpty(model.errors);
     }
-
 });
 

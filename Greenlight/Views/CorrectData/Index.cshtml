@@ -1,7 +1,4 @@
-﻿@Styles.Render("~/Content/pages.css")
-
-
-@Scripts.Render("~/Scripts/pages.js")
+﻿
 @Scripts.Render("~/Scripts/correctdata.js")
 @{
     ViewBag.Title = "Index";
@@ -18,25 +15,25 @@
                 <div class="panel panel-inverse">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            Upload A File
+                            Data Search
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form onsubmit="return false;">
+                        <form onsubmit=" return false; ">
                             <div class="form-group">
                                 <label for="fileNameInput">File Name</label>
-                                <input type="text" id="fileNameInput" class="form-control site-form-input" placeholder="File Name" />
+                                <input type="text" id="fileNameInput" class="form-control site-form-input" placeholder="File Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="rowIdInput">Row ID</label>
-                                <input type="text" id="rowIdInput" class="form-control site-form-input" placeholder="Row ID" />
+                                <input type="text" id="rowIdInput" class="form-control site-form-input" placeholder="Row ID"/>
                             </div>
                             <div class="form-group">
                                 <label for="dataSearchInput">Data Search</label>
-                                <input type="text" id="dataSearchInput" class="form-control site-form-input" placeholder="File Name" />
+                                <input type="text" id="dataSearchInput" class="form-control site-form-input" placeholder="File Name"/>
                             </div>
-                            
-                            
+
+
                             <button class="btn btn-danger btn-lg pull-right btn-margin" id="cancelBtn" type="reset">
                                 <i class="fa fa-times"></i>
                                 Cancel
@@ -51,6 +48,16 @@
                             </button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="data-log" rv-hide ="logData | isEmpty">
+                    <span class="log-header">Data Log:</span>
+                    <ul>
+                        <li rv-each-data ="logData">{ data }</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -88,7 +95,6 @@
                         </table>
                     </div>
                 </div>
-                <input rv-value="model.test.val"/>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">

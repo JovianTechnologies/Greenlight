@@ -1,7 +1,6 @@
-﻿@Styles.Render("~/Content/pages.css")
+﻿
 @Styles.Render("~/Content/viewdata.css")
 
-@Scripts.Render("~/Scripts/pages.js")
 @Scripts.Render("~/Scripts/managedata.js")
 @Scripts.Render("~/Scripts/viewdata.js")
 
@@ -61,7 +60,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row section-container section-with-top-border">
         <div class="col-md-10">
             <div class="panel panel-grey">
@@ -71,24 +70,24 @@
                 <div id="searchTableContainer" class="no-show table-responsive">
                     <table id="searchTable" class="table table-bordered table-td-valign-middle">
                         <thead>
-                            <tr class="grey">
-                                <th>Data Load ID</th>
-                                <th>Daata File Name</th>
-                                <th>Client ID</th>
-                                <th>Entity ID</th>
-                                <th>Insert Date</th>
-                                <th>Delete</th>
-                            </tr>
+                        <tr class="grey">
+                            <th>Data Load ID</th>
+                            <th>Data File Name</th>
+                            <th>Client ID</th>
+                            <th>Entity ID</th>
+                            <th>Insert Date</th>
+                            <th>Delete</th>
+                        </tr>
                         </thead>
                         <tbody id="files">
-                            <tr rv-each-file="filesList">
-                                <td>{ file.Id }</td>
-                                <td>{file.DataFileName}</td>
-                                <td>{ file.ClientId}</td>
-                                <td>{ file.EntityId }</td>
-                                <td><span rv-text="file.InsertDate | date"></span></td>
-                                <td><input type="checkbox" rv-checked="file.delete" /></td>
-                            </tr>
+                        <tr rv-each-file="filesList">
+                            <td>{ file.Id }</td>
+                            <td>{ file.DataFileName }</td>
+                            <td>{ file.ClientId }</td>
+                            <td>{ file.EntityId }</td>
+                            <td><span rv-text="file.InsertDate | date"></span></td>
+                            <td><input type="checkbox" rv-checked="file.delete"/></td>
+                        </tr>
                         </tbody>
                     </table>
 
@@ -96,7 +95,7 @@
                 <button id="deleteBtn" class="btn btn-lg btn-danger pull-right no-show">
                     <i class="fa fa-minus"></i>
                     Delete
-                </button>   
+                </button>
                 <button id="viewBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin no-show" rv-disabled="selectedRow | null"
                         data-toggle="modal" data-target="#myModal">
                     <i class="fa fa-eye"></i>
@@ -107,8 +106,20 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-2"></div>
         <div class="col-lg-8">
-            <div class="data-log no-show">
+            <div id="errors" class="errors" rv-hide="errors | isEmpty">
+                <span class="error-label">Errors</span>
+                <ul id="errorList" class="error-list error-content">
+                    <li rv-each-error="errors">{ error }</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="data-log" rv-hide="dataLog | isEmpty">
                 <span class="log-header">Data Log:</span>
             </div>
         </div>
@@ -119,57 +130,53 @@
     <div class="modal-dialog">
 
         <!-- Modal content-->
-        <div class="modal-content" style="width:1000px; margin-left: -200px">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <span rv-text="selectedfilename"></span><h4 id="modal-title" class="modal-title" rv-text="selectedFileName"></h4>
+    <div class="modal-content" style="width:1000px; margin-left: -200px">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <span rv-text="selectedfilename"></span><h4 id="modal-title" class="modal-title" rv-text="selectedFileName"></h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <div id="matched" class="view-type widget widget-stat bg-inverse text-white view-type-active">
+                        <div class="widget-stat-text">Matched</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div id="unmatched" class="view-type widget widget-stat bg-inverse text-white">
+                        <div class="widget-stat-text">Unmatched</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div id="correction" class="view-type widget widget-stat bg-inverse text-white">
+                        <div class="widget-stat-text">Collection</div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div id="matched" class="time-period widget widget-stat bg-inverse text-white time-period-active">
-                            <div class="widget-stat-text">Matched</div>
-                        </div>
+                <div class="panel panel-grey">
+                    <div class="panel-heading">
+                        Search Results
                     </div>
-                    <div class="col-md-2">
-                        <div id="unmatched" class="time-period widget widget-stat bg-inverse text-white">
-                            <div class="widget-stat-text">Unmatched</div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div id="correction" class="time-period widget widget-stat bg-inverse text-white">
-                            <div class="widget-stat-text">Collection</div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="panel panel-grey">
-                        <div class="panel-heading">
-                            Search Results
-                        </div>
-                        <div id="searchTableContainer" class="table-responsive">
-                            <table id="searchTable" class="table table-bordered table-td-valign-middle">
-                                <thead>
-                                    <tr class="grey">
-                                        <th rv-each-setting="userSettings.headers">
-                                            { setting }
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr id="data" rv-each-data="fileData">
-                                        <td rv-each-dataitem="data | selectedColumns | objectToArray">
-                                            { dataitem }
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div id="searchTableContainer" class="table-responsive">
+                        <table id="searchTable" class="table table-bordered table-td-valign-middle">
+                            <thead>
+                                <tr class="grey">
+                                    <th rv-each-setting="userSettings.headers">
+                                        { setting }
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="data" rv-each-data="fileData">
+                                    <td rv-each-dataitem="data | selectedColumns | objectToArray">
+                                        { dataitem | date }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>

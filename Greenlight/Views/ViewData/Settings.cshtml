@@ -1,5 +1,5 @@
 ﻿
-@Styles.Render("~/Content/pages.css")
+
 @Styles.Render("~/Content/settings.css")
 
 @Scripts.Render("~/Scripts/lodash.js")
@@ -15,6 +15,7 @@
 </div>
 
 <div class="container-fluid">
+    <div class="row">
         <div class="col-sm-8">
             <div class="panel panel-grey">
                 <div class="panel-heading">
@@ -33,22 +34,27 @@
                         <tbody id="files">
                             <tr rv-each-config="dataConfigurations">
                                 <td>{ config.Number }</td>
-                                <td>{ config.Header}</td>
-                                <td>{ config.Description}</td>
-                                <td><input type="checkbox" rv-checked="config.isSelected"/></td>
+                                <td>{ config.Header }</td>
+                                <td>{ config.Description }</td>
+                                <td><input type="checkbox" rv-checked="config.isSelected" /></td>
                             </tr>
                         </tbody>
                     </table>
 
                 </div>
-                <button id="cancelBtn" class="btn btn-lg btn-danger pull-right">
-                    <i class="fa fa-times"></i>
-                    Cancel
-                </button>
-                <button id="saveBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin">
-                    <i class="fa fa-floppy-o"></i>
-                    Save
-                </button>
+
             </div>
         </div>
+        <div class="col-md-3 button-container">
+            <button id="cancelBtn" class="btn btn-lg btn-danger bottom-left">
+                <i class="fa fa-times"></i>
+                Cancel
+            </button>
+            <button id="saveBtn" class="btn btn-lg btn-success success-btn btn-margin">
+                <i class="fa fa-floppy-o"></i>
+                Save
+            </button>
+        </div>    
+    </div>
+    
 </div>

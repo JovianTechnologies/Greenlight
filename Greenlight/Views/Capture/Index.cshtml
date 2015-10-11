@@ -4,14 +4,13 @@
 }
 
 
-@Styles.Render("~/Content/pages.css")
+
 @Styles.Render("~/Content/capture.css")
 
 
 @Scripts.Render("~/Scripts/jquery.signalR-2.2.0.js")
 @Scripts.Render("~/signalr/hubs")
 @Scripts.Render("~/Scripts/lodash.js")
-@Scripts.Render("~/Scripts/pages.js")
 @Scripts.Render("~/Scripts/capture.js")
 
 <div class="page-header-container">
@@ -83,15 +82,19 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-2"></div>
         <div class="col-lg-8">
-            <div id="errors" class="errors no-show">
+            <div id="errors" class="errors" rv-hide="errors | isEmpty">
                 <span class="error-label">Errors</span>
-                <ul id="errorList" class="error-list error-content"></ul>
+                <ul id="errorList" class="error-list error-content">
+                    <li rv-each-error="errors">{ error }</li>
+                </ul>
             </div>
         </div>
+        <div class="col-md-2"></div>
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-md-10">
             <div class="data-log no-show">
                 <span class="log-header">Data Log:</span>
             </div>

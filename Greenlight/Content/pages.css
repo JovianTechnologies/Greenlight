@@ -45,7 +45,6 @@ label {
 .log-header {
     margin-left: 5px;
     font-size: larger;
-    font-weight: bold;
     text-decoration: underline;
 }
 
@@ -53,10 +52,9 @@ label {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: lightpink;
+    background-color: white;
     color: red;
     font-size: medium;
-    font-weight: bold;
     border-radius: 5px;
     border: red 1px solid;
 }
@@ -116,4 +114,17 @@ label {
 .modal-body-scrollable {
     max-height: 420px; 
     overflow-y: auto; 
+}
+
+tr {
+    height: 20px !important;
+}
+
+td {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+table {
+    white-space: nowrap
 }

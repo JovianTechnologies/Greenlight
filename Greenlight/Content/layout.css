@@ -13,7 +13,7 @@ body {
 }
 
 #header {
-    border-bottom: darkgreen 1px solid;
+    box-shadow: 1px 1px 1px #888888;
     height: 5%;
 }
 
@@ -38,3 +38,10 @@ body {
     min-height: 60px;
 }
 
+li.active > a > i {
+    background-color: #00F900 !important;
+}
+
+.text-theme {
+    color: white !important;
+}

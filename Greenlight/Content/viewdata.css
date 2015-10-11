@@ -1,3 +1,12 @@
 ﻿#searchTableContainer {
     margin-bottom: 15px;
 }
+
+.view-type {
+    cursor: pointer;
+    padding: 12px;
+}
+
+.view-type-active {
+    background-color: #1ABC9C !important;
+}

@@ -21,7 +21,9 @@ var model = {
     filesList: _.sortBy(files, function(file) { return file.Id; }),
     fileData: fileData,
     selectedFileName: "",
-    userSettings: $.parseJSON(sessionStorage.getItem("configData"))
+    userSettings: $.parseJSON(sessionStorage.getItem("configData")),
+    errors: [],
+    dataLog: []
 };
 
 $(document).ready(function () {
@@ -75,9 +77,21 @@ $(document).ready(function () {
         });
     });
 
-    function validate() {
-        return $("#fileNameInput").val() !== "" && timePeriod !== undefined;
-    }
+    $(".view-type").on('click', function () {
+        //remove from all other buttons
+        $(".view-type").removeClass("view-type-active");
+
+        //attach to this button
+        $(this).addClass("view-type-active");
+
+        timePeriod = $(this).attr("id");
+
+        //check to see if the current view has a model and if so, check if it contains
+        //errors, if it does then remove them
+        if (typeof model !== 'undefined' && typeof model.errors !== 'undefined' && !_.isEmpty(model.errors)) {
+            model.errors = [];
+        }
+    });
 
     function removeNoShow(element) {
         if ($(element).hasClass('no-show'))
@@ -95,6 +109,14 @@ $(document).ready(function () {
         addNoShow(deleteBtn);
         model.selectedRow = null;
         $('#files').children().removeClass("row-selected");
+    }
+
+    function validate() {
+        if (typeof timePeriod === 'undefined' && model.errors.indexOf(ErrorType.timePeriodMissingError) === -1) {
+            model.errors.push(ErrorType.timePeriodMissingError);
+        }
+
+        return _.isEmpty(model.errors);
     }
 
     
