@@ -9,13 +9,14 @@ rivets.formatters.isEmpty = function (array) {
 }
 
 rivets.formatters.date = function (value) {
-    var millis = value.substring(value.indexOf("(") + 1, value.indexOf(")"));
-    var date = new Date(parseInt(millis));
-    if (date != "Invalid Date") {
-        
-        return date.customFormat("#YYYY#-#MM#-#DD#");
-    }
+    if (typeof value == "string") {
+        var millis = value.substring(value.indexOf("(") + 1, value.indexOf(")"));
+        var date = new Date(parseInt(millis));
+        if (date != "Invalid Date") {
 
+            return date.customFormat("#YYYY#-#MM#-#DD#");
+        }
+    }
     return value;
 };
 
