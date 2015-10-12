@@ -8,22 +8,15 @@
     @Styles.Render("~/Content/jquery-ui.min.css")
     @Styles.Render("~/Content/bootstrap.css")
     @Styles.Render("~/Content/style.min.css")
-    <link rel="stylesheet" href="/Content/font-awesome-4.4.0/css/font-awesome.min.css"/>
+    @Styles.Render("~/Content/font-awesome-4.4.0/css/font-awesome.min.css")
     @Styles.Render("~/Content/layout.css")
     @Styles.Render("~/Content/pages.css")
    
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/jquery-migrate-1.1.0.min.js")
     @Scripts.Render("~/Scripts/jquery-ui.min.js")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/jquery.slimscroll.min.js")
-    @Scripts.Render("~/Scripts/bootstrap_calendar.min.js")
-    @Scripts.Render("~/Scripts/chart.min.js")
-    @Scripts.Render("~/Scripts/jquery.gritter.js")
-    @Scripts.Render("~/Scripts/page-index-v2.demo.min.js")
-    @Scripts.Render("~/Scripts/demo.min.js")
     @Scripts.Render("~/Scripts/apps.min.js")
     @Scripts.Render("~/Scripts/rivets.bundled.min.js");
     @Scripts.Render("~/Scripts/lodash.js")
@@ -55,63 +48,63 @@
                     </ul>
                 </div>
             </div>
-            <div id="sidebar" class="sidebar">
-                <div class="slimScrollDiv">
-                    <div data-scrollbar="true" data-height="100%" data-init="true" style="overflow: hidden; width: auto; height: 100%">
-                    <ul class="nav" style="margin-top: 10px;">
-                        <li id="homeLink">
-                            <a href="@Url.Content("~/home/")">
-                                <i class="fa fa-home fa-2x"></i>
-                                <span class="">Home</span>
-                            </a>
-                        </li>
-                        <li id="captureLink">
-                            <a href="@Url.Content("~/capture/")">
-                                <i class="fa fa-upload fa-2x"></i>
-                                <span class="">Capture Data</span>
-                            </a>
-                        </li>
-                        <li id="viewDataLink" class="has-sub">
-                            <a href="#">
-                                <b class="caret pull-right"></b>
-                                <i class="fa fa-search fa-2x test"></i>
-                                <span>View and Manage</span>
-                            </a>
-                            <ul class="sub-menu" style="">
-                                <li id="view"><a href="@Url.Content("~/viewdata/")">View Data</a></li>
-                                <li id="manage"><a href="@Url.Content("~/viewdata/settings/")">Settings</a></li>
-                            </ul>
-                        </li>
-                        <li id="correctDataLink">
-                            <a href="../correctdata/">
-                                <i class="fa fa-pencil fa-2x"></i>
-                                <span class="">Correct Data</span>
-                            </a>
-                        </li>
-                        <li id="convertToXmlLink">
-                            <a href="#">
-                                <i class="fa fa-code fa-2x"></i>
-                                <span class="">Convert To XML</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-area-chart fa-2x"></i>
-                                <span class="">View Reports</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-line-chart fa-2x"></i>
-                                <span class="">Custom Reports</span>
-                            </a>
-                        </li>
-                    </ul>
+            <div id="sidebar" class="sidebar" style="height: 100%">
+                <div class="slimScrollDiv" style="height: 100%">
+                    <div style="overflow: auto; width: auto; height: 100%">
+                        <ul class="nav" style="margin-top: 10px;">
+                            <li id="homeLink">
+                                <a href="@Url.Content("~/home/")">
+                                    <i class="fa fa-home fa-2x"></i>
+                                    <span class="">Home</span>
+                                </a>
+                            </li>
+                            <li id="captureLink">
+                                <a href="@Url.Content("~/capture/")">
+                                    <i class="fa fa-upload fa-2x"></i>
+                                    <span class="">Capture Data</span>
+                                </a>
+                            </li>
+                            <li id="viewDataLink" class="has-sub">
+                                <a href="#">
+                                    <b class="caret pull-right"></b>
+                                    <i class="fa fa-search fa-2x test"></i>
+                                    <span>View and Manage</span>
+                                </a>
+                                <ul class="sub-menu" style="">
+                                    <li id="view"><a href="@Url.Content("~/viewdata/")">View Data</a></li>
+                                    <li id="manage"><a href="@Url.Content("~/viewdata/settings/")">Settings</a></li>
+                                </ul>
+                            </li>
+                            <li id="correctDataLink">
+                                <a href="@Url.Content("~/correctdata/")">
+                                    <i class="fa fa-pencil fa-2x"></i>
+                                    <span class="">Correct Data</span>
+                                </a>
+                            </li>
+                            <li id="convertToXmlLink">
+                                <a href="#">
+                                    <i class="fa fa-code fa-2x"></i>
+                                    <span class="">Convert To XML</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-area-chart fa-2x"></i>
+                                    <span class="">View Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-line-chart fa-2x"></i>
+                                    <span class="">Custom Reports</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    @*                <div class="slimScrollBar ui-draggable" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 0px; height: 327.493px; background: rgb(0, 0, 0);"></div>*@
+                    @*                <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 0px; background: rgb(51, 51, 51);"></div>*@
                 </div>
-@*                <div class="slimScrollBar ui-draggable" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 0px; height: 327.493px; background: rgb(0, 0, 0);"></div>*@
-@*                <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 0px; background: rgb(51, 51, 51);"></div>*@
-                </div>
-                
+
             </div>
             <div id="content" class="content">
                 @RenderBody()
@@ -129,8 +122,6 @@
 <script>
     $(document).ready(function() {
         App.init();
-        Demo.init();
-        PageDemo.init();
     });
 </script>
 </body>
