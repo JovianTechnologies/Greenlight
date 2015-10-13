@@ -13,19 +13,27 @@ model = {
 }
 
 $(document).ready(function () {
-    
     var view = rivets.bind($('body'), model);
 
+    //add two rows of correction inputs
     appendCorrectionRow();
+    appendCorrectionRow();
+
+    //set modal to full size of screen
+    
+
+    //reset modal size if window changed
+    $(window).resize(adjustModalSize);
 
     $('#searchBtn').on("click", function () {
         if ($("#fileNameInput").val() !== "") {
             $('#correctDataModal').modal('show');
+            adjustModalSize();
         } else {
             
         }
     });
-
+    
     $("#addRow").on("click", function () {
         appendCorrectionRow();
     });
@@ -96,6 +104,17 @@ $(document).ready(function () {
                          "<div class='col-md-4'><input class='form-control' /></div>");
         $("#correctionForm").append($(inputRow));
         $('#modalBody').scrollTop($('#modalBody')[0].scrollHeight);
+
+        
+    }
+
+    function adjustModalSize() {
+        $("#modalContent").width(window.innerWidth - 14);
+        $("#modalContent").height(window.innerHeight);
+        var modalBodyHeight = window.innerHeight - $("#modalHeader")[0].offsetHeight - $("#modalFooter")[0].offsetHeight;
+        $("#modalBody").css('height', (modalBodyHeight) + "px");
+        $("#modalBody").css('max-height', modalBodyHeight + "px");
+        $("#tableDiv").height(modalBodyHeight - ($("#inputsDiv")[0].offsetHeight * 2));
     }
 });
 
