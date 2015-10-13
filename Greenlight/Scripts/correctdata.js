@@ -28,7 +28,7 @@ $(document).ready(function () {
     $('#searchBtn').on("click", function () {
         if ($("#fileNameInput").val() !== "") {
             $('#correctDataModal').modal('show');
-            adjustModalSize();
+            setTimeout(adjustModalSize, 170);
         } else {
             
         }
@@ -44,6 +44,7 @@ $(document).ready(function () {
         //add one set of inputs back
         appendCorrectionRow();
     });
+
     $("#correctModalBtn").on("click", function () {
         var inputRows = $(".input-row");
 
@@ -99,9 +100,9 @@ $(document).ready(function () {
         var inputRow = document.createElement("div");
         $(inputRow).addClass("row input-row").css({ "margin-top": "10px" });
 
-        $(inputRow).html("<div class='col-md-4'><input class='form-control' /></div>" +
-                         "<div class='col-md-4'><input class='form-control' /></div>" +
-                         "<div class='col-md-4'><input class='form-control' /></div>");
+        $(inputRow).html("<div class='col-md-4'><input class='form-control' placeholder='Row Id' /></div>" +
+                         "<div class='col-md-4'><input class='form-control' placeholder='Data Value To Modify' /></div>" +
+                         "<div class='col-md-4'><input class='form-control' placeholder='New Entry' /></div>");
         $("#correctionForm").append($(inputRow));
         $('#modalBody').scrollTop($('#modalBody')[0].scrollHeight);
 
@@ -109,12 +110,13 @@ $(document).ready(function () {
     }
 
     function adjustModalSize() {
-        $("#modalContent").width(window.innerWidth - 14);
-        $("#modalContent").height(window.innerHeight);
-        var modalBodyHeight = window.innerHeight - $("#modalHeader")[0].offsetHeight - $("#modalFooter")[0].offsetHeight;
+        $('body').css('overflow-x', 'hidden');
+        $("#modalContent").width(window.innerWidth - 17);
+        $("#modalContent").height(window.innerHeight - 5);
+        var modalBodyHeight = window.innerHeight - $("#modalHeader")[0].offsetHeight - $("#modalFooter")[0].offsetHeight - 10;
         $("#modalBody").css('height', (modalBodyHeight) + "px");
         $("#modalBody").css('max-height', modalBodyHeight + "px");
-        $("#tableDiv").height(modalBodyHeight - ($("#inputsDiv")[0].offsetHeight * 2));
+        $("#tableDiv").height("60%");
     }
 });
 

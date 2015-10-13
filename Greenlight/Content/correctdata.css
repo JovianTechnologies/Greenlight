@@ -1,3 +1,13 @@
-﻿.modal-footer {
+﻿
+.modal-footer {
     padding: 15px 20px 15px 20px;
+}
+
+.table-responsive {
+    height: 90%;
+    overflow-y: auto; 
+}
+
+#correctDataModal {
+    overflow: hidden;
 }
