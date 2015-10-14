@@ -109,14 +109,31 @@ $(document).ready(function () {
         
     }
 
-    function adjustModalSize() {
+    function adjustModalSize(baseWidth, baseheight) {
+        if (arguments.length === 0) {
+            baseWidth = window.innerWidth;
+            baseheight = window.innerHeight;
+        }
+
         $('body').css('overflow-x', 'hidden');
-        $("#modalContent").width(window.innerWidth - 17);
-        $("#modalContent").height(window.innerHeight - 5);
-        var modalBodyHeight = window.innerHeight - $("#modalHeader")[0].offsetHeight - $("#modalFooter")[0].offsetHeight - 10;
+        $("#modalContent").width(baseWidth - 17);
+        $("#modalContent").height(baseheight - 5);
+        var modalBodyHeight = baseheight - $("#modalHeader")[0].offsetHeight - $("#modalFooter")[0].offsetHeight - 10;
         $("#modalBody").css('height', (modalBodyHeight) + "px");
         $("#modalBody").css('max-height', modalBodyHeight + "px");
         $("#tableDiv").height("60%");
     }
+
+    $("#minimize").on('click', function() {
+        adjustModalSize(window.innerWidth, window.innerHeight * .5);
+        $(this).hide();
+        $('#maximize').show();
+    });
+
+    $('#maximize').on('click', function() {
+        adjustModalSize(window.innerWidth, window.innerHeight);
+        $(this).hide();
+        $('#minimize').show();
+    });
 });
 
