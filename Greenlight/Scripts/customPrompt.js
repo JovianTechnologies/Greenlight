@@ -1,4 +1,4 @@
-﻿window.prettyBoot = new (function () {
+﻿window.customPrompt = new (function () {
     var isPrompt = false;
     var messageTitle = "";
     var message = "";

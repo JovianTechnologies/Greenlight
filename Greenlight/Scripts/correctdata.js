@@ -80,7 +80,7 @@ $(document).ready(function () {
         });
 
         if (isUpdated) {
-            prettyBoot.create({
+            customPrompt.create({
                 messageTitle: "Success!",
                 message: "Data matched successfully",
                 iconClass: "fa-check-circle-o"

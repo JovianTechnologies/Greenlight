@@ -56,7 +56,7 @@ $(document).ready(function () {
     });
 
     $('#deleteBtn').on('click', function () {
-        prettyBoot.create({
+        customPrompt.create({
             isPrompt: true,
             messageTitle: "DELETE",
             message: "This action cannot be undone", 

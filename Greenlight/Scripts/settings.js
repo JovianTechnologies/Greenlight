@@ -39,7 +39,7 @@ $(document).ready(function () {
             }
         });
         sessionStorage.setItem("configData", JSON.stringify({ headers: selectedItems }));
-        prettyBoot.create({
+        customPrompt.create({
             messageTitle: "Success!",
             message: "Settings saved successfully",
             iconClass: "fa-check-circle-o"
