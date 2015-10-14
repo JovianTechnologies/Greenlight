@@ -284,7 +284,7 @@
     <Content Include="Scripts\managedata.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pages.js" />
-    <Content Include="Scripts\prettyPrompt.js" />
+    <Content Include="Scripts\customPrompt.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\rivets.bundled.min.js" />
