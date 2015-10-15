@@ -29,7 +29,6 @@
         modal.css({ "margin-top": "200px", "width": "300px" });
 
         //set body of cormirmation modal
-
         body.css({ "height": "120px", "background-color": bgcolor, "color": "white", "margin": "0", "border-top-left-radius": "5px", "border-top-right-radius": "5px" });
         var span = document.createElement("span");
         $(span).addClass("fa fa " + iconClass).css({ "width": "100%", "text-align": "center", "font-size": "60px" });

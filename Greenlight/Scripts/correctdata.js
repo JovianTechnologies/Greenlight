@@ -19,9 +19,6 @@ $(document).ready(function () {
     appendCorrectionRow();
     appendCorrectionRow();
 
-    //set modal to full size of screen
-    
-
     //reset modal size if window changed
     $(window).resize(adjustModalSize);
 

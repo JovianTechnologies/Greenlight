@@ -1,10 +1,5 @@
 ﻿$(document).ready(function () {
-//    function removeActiveClass() {
-//        $('.active').removeClass("active");
-//    }
-
-    //highlight correct tab when new view loads
-    //removeActiveClass();
+    App.init();
 
     if (window.location.pathname.indexOf("capture") >= 0) {
         $("#captureLink").addClass("active");

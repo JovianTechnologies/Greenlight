@@ -3,9 +3,9 @@
 };
 
 $(document).ready(function () {
-    rivets.bind($("body"), model);
+    var view = rivets.bind($("body"), model);
 
-    //progress bar functionality
+    //progress bar functionality using signalr
     $("#progressbar").progressbar({ value: 0 });
     var connectionProxy = $.connection.progressHub;
     connectionProxy.client.updatePage = updateProgress;
@@ -20,7 +20,6 @@ $(document).ready(function () {
             progressNotifier.start()
                 .done(function() { connectionProxy.server.callLongOperation(); })
                 .fail(function() { console.log("Could not connect"); });
-
         }
     });
 
