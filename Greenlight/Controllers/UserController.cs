@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Greenlight.CustomAttributes;
 
 namespace Greenlight.Controllers
 {
@@ -26,7 +27,7 @@ namespace Greenlight.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (user.IsValid(user.Username, user.Password))
+                if (user.IsValid())
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, true);
                     return RedirectToAction("Index", "Home");
