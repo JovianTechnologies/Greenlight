@@ -55,5 +55,8 @@ $(document).ready(function () {
 
         return _.isEmpty(model.errors);
     }
+
+    //file selection functionality
+    inputFileSelectorInit($("#fileName"), $("#fileNameProxy"));
 });
 

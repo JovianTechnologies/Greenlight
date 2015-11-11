@@ -7,6 +7,10 @@ rivets.formatters.isEmpty = function (array) {
     return false;
 }
 
+rivets.formatters.oppositeBool = function(item) {
+    return !item;
+}
+
 rivets.formatters.date = function (value) {
     if (typeof value == "string") {
         var millis = value.substring(value.indexOf("(") + 1, value.indexOf(")"));
@@ -101,26 +105,26 @@ $(document).ready(function () {
         }
     });
 
-    //file selection functionality
-    var fileName = $("#fileName");
-    var fileNameProxy = ($("#fileNameProxy"));
-
-    $(fileName).trigger("click");
-    $(fileName).on("change", function () {
-        $(fileNameProxy).val(document.captureForm.fileName.files[0].name);
-        $("#result").html("");
-    });
-
-    $(fileNameProxy).on("click", function () {
-        document.captureForm.fileName.click();
-    });
+    
 
     $("tr").on("click", function () {
         $(this).addClass("row-selected");
         $(this).siblings().removeClass("row-selected");
     });
 
-    
+    //functionality for input file selectors
+    window.inputFileSelectorInit = function(fileElement, fileElementProxy) {
+
+        $(fileElement).trigger("click");
+        $(fileElement).on("change", function () {
+            $(fileElementProxy).val(this.files[0].name);
+            $("#result").html("");
+        });
+
+        $(fileElementProxy).on("click", function () {
+           fileElement.click();
+        });
+    }
 
 });
 

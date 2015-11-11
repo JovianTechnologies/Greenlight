@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "Company Information";
+}
+
+@Styles.Render("~/Content/company.css")
+
+@Scripts.Render("~/Scripts/lodash.js")
+@Scripts.Render("~/Scripts/company.js")
+
+<div class="page-header-container">
+    <h1 class="page-header">Company Information</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form onsubmit="return false;" name="companyForm" id="companyForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label for="companyName">Company Name</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input id="companyName" class="form-control" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label for="phoneNumber">Phone Number</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input id="phoneNumber" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label for="country">Country</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input id="country" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label for="companyLogoProxy">Company Logo</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="companyLogoProxy" name="companyLogoProxy" class="form-control" />
+                                <input type="file" id="companyLogo" name="companyLogo" style="display: none" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label for="address1">Address 1</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="address1" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            <label for="address2">Address 2</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="address2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            <label for="city">City</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="city" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            <label for="statezip">State/Zip</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="statezip" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            <label for="contact ">Contact Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="contact" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            <label for="email">E-mail Address</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <button id="cancelBtn" class="btn btn-danger pull-right" rv-class-hide="isEditMode | oppositeBool">
+                            Cancel
+                        </button>
+                        <button id="saveBtn" class="btn btn-success success-btn btn-margin pull-right" rv-class-hide="isEditMode | oppositeBool">
+                            Save
+                        </button>
+                        <button id="editBtn"class="btn btn-warning pull-right btn-margin" rv-class-hide="isEditMode">
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

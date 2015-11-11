@@ -19,7 +19,7 @@ namespace Greenlight.DataAccess.Impl
         public UserMongoDao()
         {
             _client = new MongoClient();
-            _database = _client.GetDatabase("local");
+            _database = _client.GetDatabase("greenlight");
         }
 
         public bool ValidateUser(string username, string password)

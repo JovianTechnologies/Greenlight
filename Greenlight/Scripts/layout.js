@@ -13,7 +13,14 @@
     }
     else if (window.location.pathname.indexOf("correctdata") >= 0) {
         $("#correctDataLink").addClass("active");
-    } else {
+    } else if(window.location.pathname.indexOf("administration") >= 0){
+        $("#adminLink").addClass("active");
+        if (window.location.pathname.indexOf("company") >= 0) {
+            $("#company").addClass("active");
+        } else {
+            $("#users").addClass("active");
+        }
+    }else {
         $("#homeLink").addClass("active");
     }
 
