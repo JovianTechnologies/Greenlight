@@ -8,22 +8,17 @@ $(document).ready(function() {
 
     inputFileSelectorInit($("#companyLogo"), $("#companyLogoProxy"));
 
-    $("input").prop("disabled", false);
-
-    $('#saveBtn').click(function () {
-        model.isEditMode = false;
-        $("input").prop("disabled", true);
-    });
+    $("input[type=text]").prop("disabled", true);
 
     $('#cancelBtn').click(function () {
         model.isEditMode = false;
-        $("input").prop("disabled", true);
+        $("input[type=text]").prop("disabled", true);
+        return false;
     });
 
     $('#editBtn').click(function() {
         model.isEditMode = true;
-        $("input").prop("disabled", false);
+        $("input[type=text]").prop("disabled", false);
+        return false;
     });
-
-
 });

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Greenlight.Models.Company
+
+@{
     ViewBag.Title = "Company Information";
 }
 
@@ -14,25 +16,26 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <form onsubmit="return false;" name="companyForm" id="companyForm">
+            @using (Html.BeginForm("UpdateCompany", "Administration", FormMethod.Post )) { 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
+                            @Html.HiddenFor(model => model.Id)
                             <div class="col-md-3">
-                                <label for="companyName">Company Name</label>
+                                @Html.LabelFor(model => model.Name)
                             </div>
                             <div class="col-md-9">
-                                <input id="companyName" class="form-control" type="text"/>
+                                @Html.TextBoxFor(model => model.Name, new {@class = "form-control", id="companyName"})
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-3">
-                                <label for="phoneNumber">Phone Number</label>
+                                @Html.LabelFor(model => model.PhoneNumber)
                             </div>
                             <div class="col-md-9">
-                                <input id="phoneNumber" class="form-control" type="text" />
+                                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", id = "phoneNumber" })
                             </div>
                         </div>
                     </div>
@@ -41,86 +44,85 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-3">
-                                <label for="country">Country</label>
+                                @Html.LabelFor(model => model.Country)
                             </div>
                             <div class="col-md-9">
-                                <input id="country" class="form-control" type="text" />
+                                @Html.TextBoxFor(model => model.Country, new { @class = "form-control", id = "country" })
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
+@*                        <div class="form-group">*@
+@*                            <div class="col-md-3">*@
+@*                                @Html.LabelFor(model => model.Logo)*@
+@*                            </div>*@
+@*                            <div class="col-md-9">*@
+@*                                <input type="text" id="companyLogoProxy" name="companyLogoProxy" class="form-control" />*@
+@*                                <input type="file" id="companyLogo" name="companyLogo" style="display: none" />*@
+@*                            </div>*@
+@*                        </div>*@
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-3">
-                                <label for="companyLogoProxy">Company Logo</label>
+                                @Html.LabelFor(model => model.Address1)
                             </div>
                             <div class="col-md-9">
-                                <input type="text" id="companyLogoProxy" name="companyLogoProxy" class="form-control" />
-                                <input type="file" id="companyLogo" name="companyLogo" style="display: none" />
+                                @Html.TextBoxFor(model => model.Address1, new { @class = "form-control", id = "address1" })
+                            </div>
+                        </div>
+                    </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="col-md-3">
-                                <label for="address1">Address 1</label>
-                            </div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" id="address1" />
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="col-md-3">
-                            <label for="address2">Address 2</label>
+                            @Html.LabelFor(model => model.Address2)
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="address2" />
+                            @Html.TextBoxFor(model => model.Address2, new { @class = "form-control", id = "address2" })
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="col-md-3">
-                            <label for="city">City</label>
+                            @Html.LabelFor(model => model.City)
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="city" />
+                            @Html.TextBoxFor(model => model.City, new { @class = "form-control", id = "city" })
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="col-md-3">
-                            <label for="statezip">State/Zip</label>
+                            @Html.LabelFor(model => model.StateZip)
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="statezip" />
+                            @Html.TextBoxFor(model => model.StateZip, new { @class = "form-control", id = "statezip" })
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="col-md-3">
-                            <label for="contact ">Contact Name</label>
+                            @Html.LabelFor(model => model.Contact)
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="contact" />
+                            @Html.TextBoxFor(model => model.Contact, new { @class = "form-control", id = "contact" })
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="col-md-3">
-                            <label for="email">E-mail Address</label>
+                            @Html.LabelFor(model => model.Email)
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="email" />
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id = "email" })
                         </div>
                     </div>
                 </div>
@@ -129,15 +131,14 @@
                         <button id="cancelBtn" class="btn btn-danger pull-right" rv-class-hide="isEditMode | oppositeBool">
                             Cancel
                         </button>
-                        <button id="saveBtn" class="btn btn-success success-btn btn-margin pull-right" rv-class-hide="isEditMode | oppositeBool">
-                            Save
-                        </button>
+                        <input type="submit" id="saveBtn" class="btn btn-success success-btn btn-margin pull-right" rv-class-hide="isEditMode | oppositeBool" value="Save" />
+                            
                         <button id="editBtn"class="btn btn-warning pull-right btn-margin" rv-class-hide="isEditMode">
                             Edit
                         </button>
                     </div>
                 </div>
-            </form>
+            }
         </div>
     </div>
 </div>

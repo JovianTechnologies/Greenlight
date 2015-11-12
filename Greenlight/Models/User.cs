@@ -40,6 +40,7 @@ namespace Greenlight.Models
 
             result.Wait();
             HttpContext.Current.Session["role"] = result.Result.Role;
+            HttpContext.Current.Session["username"] = Username;
             return result.Result.IsValid;
         }
     }
