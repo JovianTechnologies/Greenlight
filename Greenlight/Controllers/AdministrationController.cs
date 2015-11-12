@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,17 +25,8 @@ namespace Greenlight.Controllers
         [HttpPost]
         public ActionResult UpdateCompany(Company org)
         {
-            var modelstate = ModelState.IsValid;
-            var file = Request.Files["companyLogo"];
-            byte[] fileBytes;
-            if (file != null)
-            {
-                fileBytes = new byte[file.ContentLength];
-                file.InputStream.Read(fileBytes, 0, file.ContentLength);
-                org.Logo = fileBytes;
-
-            }
-
+            
+            
             _companyBizManager.UpdateCompany(org);
             return RedirectToAction("Company");
         }

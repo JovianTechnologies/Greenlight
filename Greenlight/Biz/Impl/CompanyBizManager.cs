@@ -27,7 +27,7 @@ namespace Greenlight.Biz.Impl
             company.Contact = companyResult.Result.Contact;
             company.Email = companyResult.Result.Email;
             company.PhoneNumber = companyResult.Result.PhoneNumber;
-
+            company.LogoBytes = companyResult.Result.LogoBytes;
             return company;
         }
 

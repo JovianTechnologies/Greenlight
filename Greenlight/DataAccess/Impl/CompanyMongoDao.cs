@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -29,6 +30,10 @@ namespace Greenlight.DataAccess.Impl
 
             var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(company.Id));
 
+            MemoryStream target = new MemoryStream();
+            company.Logo.InputStream.CopyTo(target);
+            byte[] data = target.ToArray();
+
             var update = Builders<BsonDocument>.Update
                 .Set("name", company.Name)
                 .Set("country", company.Country)
@@ -37,7 +42,9 @@ namespace Greenlight.DataAccess.Impl
                 .Set("address2", company.Address2)
                 .Set("city", company.City)
                 .Set("contact", company.Contact)
-                .Set("email", company.Email);
+                .Set("email", company.Email)
+                .Set("logo", data);
+                
 
             await companyCollection.UpdateOneAsync(filter, update).ConfigureAwait(false);
 
@@ -80,6 +87,7 @@ namespace Greenlight.DataAccess.Impl
                 company.City = companyBson[0].ElementAt(6).Value.AsString;
                 company.Contact = companyBson[0].ElementAt(7).Value.AsString;
                 company.Email = companyBson[0].ElementAt(8).Value.AsString;
+                company.LogoBytes = companyBson[0].ElementAt(9).Value.AsByteArray;
             }
 
             return company;

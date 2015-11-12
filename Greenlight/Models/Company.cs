@@ -40,6 +40,8 @@ namespace Greenlight.Models
         public string PhoneNumber{ get; set; }
 
         [Display(Name = "Company Logo")]
-        public byte[] Logo { get; set; }
+        public HttpPostedFileBase Logo { get; set; }
+
+        public byte[] LogoBytes { get; set; }
     }
 }
