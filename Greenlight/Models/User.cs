@@ -11,8 +11,6 @@ namespace Greenlight.Models
 {
     public class User
     {
-        private readonly IUserDao _userDao = new UserMongoDao();
-
         [Required]
         [Display(Name = "User name")]
         public string Username { get; set; }
@@ -26,22 +24,10 @@ namespace Greenlight.Models
 
         public string LastName { get; set; }
 
-        public Role Role { get; set; }
+        public string Company { get; set; }
 
-        public Guid Id { get; set; }
+        public Role? Role { get; set; }
 
-        /// <summary>
-        /// Check if the user exists, and has the proper credentials
-        /// </summary>
-        /// <returns>boolean</returns>
-        public bool IsValid()
-        {
-            var result = _userDao.ValidateUserAsync(Username, Password);
-
-            result.Wait();
-            HttpContext.Current.Session["role"] = result.Result.Role;
-            HttpContext.Current.Session["username"] = Username;
-            return result.Result.IsValid;
-        }
+        public String Id { get; set; }
     }
 }

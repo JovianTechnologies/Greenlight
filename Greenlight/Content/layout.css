@@ -5,7 +5,6 @@ body {
     background-color: #F2F2EE;
     background-size: 100% 25%;
     position: relative;
-   
 }
 
 .body-div {;
@@ -25,7 +24,6 @@ body {
     background: rgba(60, 69, 77, .9);
 }
 
-
 .content {
     position: absolute;
     overflow-y: scroll; 
@@ -44,4 +42,11 @@ li.active > a > i {
 
 .text-theme {
     color: white !important;
+}
+
+.logodiv {
+    background: white;
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle
 }

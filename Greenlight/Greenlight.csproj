@@ -175,7 +175,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Biz\ICompanyBizManager.cs" />
     <Compile Include="Biz\Impl\CompanyBizManager.cs" />
+    <Compile Include="Biz\Impl\UserBizManager.cs" />
     <Compile Include="Biz\IUserBizManager.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\CaptureController.cs" />
     <Compile Include="Controllers\CorrectDataController.cs" />

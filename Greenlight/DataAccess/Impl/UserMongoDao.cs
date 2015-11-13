@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Threading.Tasks;
 using Greenlight.Data;
@@ -15,38 +17,45 @@ namespace Greenlight.DataAccess.Impl
     {
         private readonly IMongoClient _client;
         private readonly IMongoDatabase _database;
+        private readonly IMongoCollection<BsonDocument> _usersCollection; 
 
         public UserMongoDao()
         {
             _client = new MongoClient();
             _database = _client.GetDatabase("greenlight");
+            _usersCollection = _database.GetCollection<BsonDocument>("users");
         }
 
-        public bool ValidateUser(string username, string password)
+        public bool GetUser(User user)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<UserValidationResult> ValidateUserAsync(string username, string password)
+        public async Task<UserValidationResult> GetUserAsync(User user)
         {
-            var usersCollection = _database.GetCollection<BsonDocument>("users");
-
             var builder = Builders<BsonDocument>.Filter;
-            var filter = builder.Eq("username", username) & builder.Eq("password", password);
+            var filter = builder.Empty;
+            foreach (PropertyInfo prop in typeof(User).GetProperties())
+            {
+                if(prop.GetValue(user) != null)
+                    filter = filter & builder.Eq(prop.Name.ToLower(), prop.GetValue(user));
+            }
 
-            var user = await usersCollection.Find(filter).ToListAsync().ConfigureAwait(false);
+            var userBson = await _usersCollection.Find(filter).ToListAsync().ConfigureAwait(false);
             var result = new UserValidationResult();
-            result.IsValid = user.Count > 0;
+            result.IsValid = userBson.Count > 0;
             if (result.IsValid)
             {
-                var rolenumber = (int) user[0].ElementAt(6).Value.AsDouble;
-
-                result.Role = Enum.GetName(typeof(Role), rolenumber);
+                
+                user.Id = Constants.IdRegex.Match(userBson[0].ElementAt(0).Value.RawValue.ToJson()).Value.Substring(1);
+                user.FirstName = userBson[0].ElementAt(1).Value.AsString;
+                user.LastName = userBson[0].ElementAt(2).Value.AsString;
+                user.Company = Constants.IdRegex.Match(userBson[0].ElementAt(3).Value.RawValue.ToJson()).Value.Substring(1);
+                var rolenumber = (int) userBson[0].ElementAt(6).Value.AsDouble;
+                user.Role = (Role) rolenumber;
             }
-            
-
+            result.User = user;
             return result;
         }
     }
-
 }

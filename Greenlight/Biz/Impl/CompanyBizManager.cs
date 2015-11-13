@@ -12,22 +12,13 @@ namespace Greenlight.Biz.Impl
     {
         private readonly ICompanyDao _companyDao = new CompanyMongoDao();
 
-        public Company GetCompany()
+        public Company GetCompany(Company company)
         {
-            var company = new Company();
-            var companyResult = _companyDao.GetCompany();
+            var companyResult = _companyDao.GetCompany(company);
             companyResult.Wait();
-            company.Id = companyResult.Result.Id;
-            company.Name = companyResult.Result.Name;
-            company.Address1 = companyResult.Result.Address1;
-            company.Address2 = companyResult.Result.Address2;
-            company.City = companyResult.Result.City;
-            company.StateZip = companyResult.Result.StateZip;
-            company.Country = companyResult.Result.Country;
-            company.Contact = companyResult.Result.Contact;
-            company.Email = companyResult.Result.Email;
-            company.PhoneNumber = companyResult.Result.PhoneNumber;
-            company.LogoBytes = companyResult.Result.LogoBytes;
+            company = companyResult.Result;
+
+            HttpContext.Current.Session["currentcompany"] = company;
             return company;
         }
 
@@ -35,6 +26,7 @@ namespace Greenlight.Biz.Impl
         {
             var updatedCompany = _companyDao.UpdateCompany(company);
             updatedCompany.Wait();
+            HttpContext.Current.Session["currentcompany"] = company;
             return company; 
         }
     }

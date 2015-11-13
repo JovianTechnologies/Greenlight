@@ -37,7 +37,7 @@ namespace Greenlight.Models
         public string Email{ get; set; }
 
         [Display(Name = "Phone Number")]
-        public string PhoneNumber{ get; set; }
+        public string Phone{ get; set; }
 
         [Display(Name = "Company Logo")]
         public HttpPostedFileBase Logo { get; set; }

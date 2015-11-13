@@ -10,6 +10,6 @@ namespace Greenlight.DataAccess
     interface ICompanyDao
     {
         Task<Company> UpdateCompany(Company company);
-        Task<Company> GetCompany();
+        Task<Company> GetCompany(Company company);
     }
 }

@@ -2,8 +2,7 @@
 
 @{
     ViewBag.Title = "Company Information";
-    var base64 = Convert.ToBase64String(Model.LogoBytes);
-    var imgsrc = String.Format("data:image/png;base64,{0}", base64);
+    
 }
 
 @Styles.Render("~/Content/company.css")
@@ -35,10 +34,10 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.PhoneNumber)
+                                @Html.LabelFor(model => model.Phone)
                             </div>
                             <div class="col-md-9">
-                                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", id = "phoneNumber" })
+                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", id = "phoneNumber" })
                             </div>
                         </div>
                     </div>
@@ -62,7 +61,7 @@
                             <div class="col-md-9">
                                 <input type="text" id="companyLogoProxy" name="companyLogoProxy" class="form-control" />
                                 @*                                <input type="file" id="companyLogo" name="companyLogo" style="display: none" />*@
-                                @Html.TextBoxFor(model => model.Logo, new { type = "file", id = "companyLogo", name = "companyLogo" })
+                                @Html.TextBoxFor(model => model.Logo, new { type = "file", id = "companyLogo", name = "companyLogo", style="display: none"})
                             </div>
                         </div>
                     </div>
@@ -144,6 +143,5 @@
                 </div>
             }
         </div>
-        <img src="@imgsrc"/>
     </div>
 </div>

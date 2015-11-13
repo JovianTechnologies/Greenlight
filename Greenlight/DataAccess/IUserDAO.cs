@@ -9,8 +9,8 @@ namespace Greenlight.DataAccess
 {
     public interface IUserDao
     {
-        bool ValidateUser(string username, string password);
+        bool GetUser(User user);
 
-        Task<UserValidationResult> ValidateUserAsync(string username, string password);
+        Task<UserValidationResult> GetUserAsync(User user);
     }
 }

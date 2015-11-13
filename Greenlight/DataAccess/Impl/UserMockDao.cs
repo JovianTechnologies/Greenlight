@@ -10,19 +10,18 @@ namespace Greenlight.DataAccess.Impl
 {
     public class UserMockDao : IUserDao
     {
-        public bool ValidateUser(string username, string password)
+      
+        public Task<UserValidationResult> ValidateUserAsync(string username, string password)
         {
-            var isValid = UserData.Users.ContainsKey(username) && UserData.Users[username].Item1 == password;
-
-            if (isValid)
-            {
-                HttpContext.Current.Session["role"] = Enum.GetName(typeof (Role), (int) UserData.Users[username].Item2);
-            }
-
-            return isValid;
+            throw new NotImplementedException();
         }
 
-        public Task<UserValidationResult> ValidateUserAsync(string username, string password)
+        public bool GetUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<UserValidationResult> GetUserAsync(User user)
         {
             throw new NotImplementedException();
         }

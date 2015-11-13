@@ -9,7 +9,7 @@ namespace Greenlight.Biz
 {
     interface ICompanyBizManager
     {
-        Company GetCompany();
+        Company GetCompany(Company company);
 
         Company UpdateCompany(Company company);
     }

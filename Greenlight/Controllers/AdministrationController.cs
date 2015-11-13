@@ -17,7 +17,8 @@ namespace Greenlight.Controllers
         // GET: /Administration/Company
         public ActionResult Company()
         {
-            var company = _companyBizManager.GetCompany();
+            var user = System.Web.HttpContext.Current.Session["currentuser"] as User;
+            var company = _companyBizManager.GetCompany(new Company(){Id = user.Company});
 
             return View(company);
         }
@@ -25,8 +26,6 @@ namespace Greenlight.Controllers
         [HttpPost]
         public ActionResult UpdateCompany(Company org)
         {
-            
-            
             _companyBizManager.UpdateCompany(org);
             return RedirectToAction("Company");
         }
