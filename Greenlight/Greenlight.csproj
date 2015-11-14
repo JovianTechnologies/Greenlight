@@ -218,10 +218,15 @@
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.4.0\HELP-US-OUT.txt" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\admin.jpg" />
+    <Content Include="Content\images\consumer.jpg" />
     <Content Include="Content\images\Greenlight Logo White.png" />
     <Content Include="Content\images\Greenlight_Full.png" />
     <Content Include="Content\images\Greenwave.png" />
     <Content Include="Content\images\GreenwaveTransparent.jpg" />
+    <Content Include="Content\images\management.jpg" />
+    <Content Include="Content\images\reporter.jpg" />
+    <Content Include="Content\images\search-icon-md.png" />
     <Content Include="Content\pages.css" />
     <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -243,6 +248,7 @@
     <Content Include="Content\login.css" />
     <Content Include="Content\settings.css" />
     <Content Include="Content\style.min.css" />
+    <Content Include="Content\users.css" />
     <Content Include="Content\viewdata.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

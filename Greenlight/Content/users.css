@@ -1,0 +1,13 @@
+﻿#searchbox{
+    background: white url("/Content/images/search-icon-md.png")no-repeat 100%;
+    background-size: contain;
+}
+
+.user-buttons {
+    padding-top: 15px !important;
+}
+
+label {
+    font-size: 24px;
+    font-weight: 400;
+}

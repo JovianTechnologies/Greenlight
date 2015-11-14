@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Greenlight.Biz;
 using Greenlight.Biz.Impl;
+using Greenlight.CustomAttributes;
 using Greenlight.Models;
 
 namespace Greenlight.Controllers
@@ -16,6 +17,7 @@ namespace Greenlight.Controllers
         private readonly IUserBizManager _userBizManager = new UserBizManager();
         //
         // GET: /Administration/Company
+        [RoleAuthorize(Roles = "Management,Administrator")]
         public ActionResult Company()
         {
             var user = System.Web.HttpContext.Current.Session["currentuser"] as User;
@@ -26,12 +28,14 @@ namespace Greenlight.Controllers
 
 
         [HttpPost]
+        [RoleAuthorize(Roles = "Management,Administrator")]
         public ActionResult UpdateCompany(Company org)
         {
             _companyBizManager.UpdateCompany(org);
             return RedirectToAction("Company");
         }
 
+        [RoleAuthorize(Roles = "Management,Administrator")]
         public ActionResult Users()
         {
             var users = _userBizManager.GetUsers();
@@ -39,6 +43,9 @@ namespace Greenlight.Controllers
             uvm.Users = users;
             return View(uvm);
         }
+
+        [RoleAuthorize(Roles = "Management,Administrator")]
+    private User 
 	}
 
     public class UsersViewModel
@@ -50,4 +57,6 @@ namespace Greenlight.Controllers
 
         public List<User> Users { get; set; } 
     }
+
+    
 }

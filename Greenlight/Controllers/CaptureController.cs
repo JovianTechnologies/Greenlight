@@ -10,7 +10,7 @@ namespace Greenlight.Controllers
     public class CaptureController : Controller
     {
         // GET: Capture
-        [RoleAuthorize(Roles = "Mangager,Reporter")]
+        [RoleAuthorize(Roles = "Management,Reporter")]
         public ActionResult Index()
         {
             return View();

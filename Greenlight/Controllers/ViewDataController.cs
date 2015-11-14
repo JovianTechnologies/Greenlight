@@ -10,14 +10,14 @@ namespace Greenlight.Controllers
     public class ViewDataController : Controller
     {
         // GET: ViewData
-        [RoleAuthorize(Roles = "Mangager,Reporter,Consumer")]
+        [RoleAuthorize(Roles = "Management,Reporter,Consumer")]
         public ActionResult Index()
         {
             return View();
         }
 
         //settings
-        [RoleAuthorize(Roles = "Mangager,Reporter")]
+        [RoleAuthorize(Roles = "Management,Reporter")]
         public ActionResult Settings() 
         {
             return View();
