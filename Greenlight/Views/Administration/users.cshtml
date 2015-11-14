@@ -1,1 +1,51 @@
-﻿
+﻿@model Greenlight.Controllers.UsersViewModel
+
+@Scripts.Render("~/Scripts/users.js")
+@{
+    ViewBag.Title = "Users";
+}
+<script>
+    var users = @Html.Raw(Json.Encode(Model.Users))
+</script>
+
+<div class="page-header-container">
+    <h1 class="page-header">Users</h1>
+</div>
+
+
+<div rv-each-user="filteredUsers">{ user.FirstName } { user.LastName}</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-grey">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input class="form-control" rv-value="searchTerm | searchUsers" />
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="panel-body">
+                    <div class="panel-option">
+                        <div class="dropdown pull-right">
+                            <a href="javascript:;" class="btn btn-white btn-rounded btn-sm" data-toggle="dropdown">Change Date <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:;">Last Week</a></li>
+                                <li><a href="javascript:;">Last Month</a></li>
+                                <li><a href="javascript:;">Last Year</a></li>
+                            </ul>
+                        </div>
+                        <div class="text-ellipsis">Date: 1 November 2015 - 30 November 2015</div>
+                    </div>
+                    <div>
+                        <canvas id="chart-visitor-analytics" data-height="228px" class="width-full" width="475" height="227" style="height: 227px; width: 475px;"></canvas>
+                        <div id="visitor-analytics-tooltip" class="chartjs-tooltip above" style="display: none; left: 350px; top: 168px; font-family: Nunito, sans-serif; font-size: 11px;"><div class="chartjs-tooltip-section">May: 180</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

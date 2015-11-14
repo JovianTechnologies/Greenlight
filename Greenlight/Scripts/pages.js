@@ -7,6 +7,8 @@ rivets.formatters.isEmpty = function (array) {
     return false;
 }
 
+
+
 rivets.formatters.oppositeBool = function(item) {
     return !item;
 }

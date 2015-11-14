@@ -10,6 +10,7 @@ namespace Greenlight.Biz
     interface IUserBizManager
     {
         bool ValidateUser(User user);
-        User GetUserAsync(User user);
+        User GetUser(User user);
+        List<User> GetUsers();
     }
 }
