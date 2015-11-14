@@ -315,6 +315,7 @@
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\ui.core.js" />
     <Content Include="Scripts\ui.progressbar.js" />
+    <Content Include="Scripts\users.js" />
     <Content Include="Scripts\viewdata.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />

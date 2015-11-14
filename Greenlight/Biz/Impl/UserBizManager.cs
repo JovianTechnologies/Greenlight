@@ -17,11 +17,12 @@ namespace Greenlight.Biz.Impl
         public bool ValidateUser(User user)
         {
             user.Role = null;
-            var result = _userDao.GetUserAsync(user);
+            var result = _userDao.GetUsersAsync(user);
 
             result.Wait();
-            HttpContext.Current.Session["role"] = Enum.GetName(typeof(Role), result.Result.User.Role);
-            HttpContext.Current.Session["currentuser"] = result.Result.User;
+            user = result.Result.Users.First();
+            HttpContext.Current.Session["role"] = Enum.GetName(typeof(Role), user.Role);
+            HttpContext.Current.Session["currentuser"] = user;
             
             var company = new Company() {Id = user.Company};
             company =_companyBizManager.GetCompany(company);
@@ -30,9 +31,18 @@ namespace Greenlight.Biz.Impl
             return result.Result.IsValid;
         }
 
-        public User GetUserAsync(User user)
+        public User GetUser(User user)
         {
             throw new NotImplementedException();
+        }
+
+        public List<User> GetUsers()
+        {
+            var result = _userDao.GetUsersAsync(new User());
+            result.Wait();
+            var users = result.Result.Users;
+
+            return users;
         }
     }
 }

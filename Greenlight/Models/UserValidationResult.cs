@@ -7,7 +7,7 @@ namespace Greenlight.Models
 {
     public class UserValidationResult
     {
-        public User User { get; set; }
+        public List<User> Users { get; set; }
         public bool IsValid { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace Greenlight.DataAccess.Impl
             throw new NotImplementedException();
         }
 
-        public async Task<UserValidationResult> GetUserAsync(User user)
+        public async Task<UserValidationResult> GetUsersAsync(User user)
         {
             var builder = Builders<BsonDocument>.Filter;
             var filter = builder.Empty;
@@ -44,17 +44,23 @@ namespace Greenlight.DataAccess.Impl
             var userBson = await _usersCollection.Find(filter).ToListAsync().ConfigureAwait(false);
             var result = new UserValidationResult();
             result.IsValid = userBson.Count > 0;
+            var userList = new List<User>();
             if (result.IsValid)
             {
+                foreach (var u in userBson)
+                {
+                    var newUser = new User();
+                    newUser.Id = Constants.IdRegex.Match(u.ElementAt(0).Value.RawValue.ToJson()).Value.Substring(1);
+                    newUser.FirstName = u.ElementAt(1).Value.AsString;
+                    newUser.LastName = u.ElementAt(2).Value.AsString;
+                    newUser.Company = Constants.IdRegex.Match(u.ElementAt(3).Value.RawValue.ToJson()).Value.Substring(1);
+                    var rolenumber = (int)u.ElementAt(6).Value.AsDouble;
+                    newUser.Role = (Role)rolenumber;
+                    userList.Add(newUser);
+                }
                 
-                user.Id = Constants.IdRegex.Match(userBson[0].ElementAt(0).Value.RawValue.ToJson()).Value.Substring(1);
-                user.FirstName = userBson[0].ElementAt(1).Value.AsString;
-                user.LastName = userBson[0].ElementAt(2).Value.AsString;
-                user.Company = Constants.IdRegex.Match(userBson[0].ElementAt(3).Value.RawValue.ToJson()).Value.Substring(1);
-                var rolenumber = (int) userBson[0].ElementAt(6).Value.AsDouble;
-                user.Role = (Role) rolenumber;
             }
-            result.User = user;
+            result.Users = userList;
             return result;
         }
     }

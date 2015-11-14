@@ -21,7 +21,7 @@ namespace Greenlight.DataAccess.Impl
             throw new NotImplementedException();
         }
 
-        public Task<UserValidationResult> GetUserAsync(User user)
+        public Task<UserValidationResult> GetUsersAsync(User user)
         {
             throw new NotImplementedException();
         }

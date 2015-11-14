@@ -11,6 +11,7 @@ namespace Greenlight.DataAccess
     {
         bool GetUser(User user);
 
-        Task<UserValidationResult> GetUserAsync(User user);
+        Task<UserValidationResult> GetUsersAsync(User user);
+
     }
 }

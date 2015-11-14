@@ -13,6 +13,7 @@ namespace Greenlight.Controllers
     public class AdministrationController : Controller
     {
         private readonly ICompanyBizManager _companyBizManager= new CompanyBizManager();
+        private readonly IUserBizManager _userBizManager = new UserBizManager();
         //
         // GET: /Administration/Company
         public ActionResult Company()
@@ -23,6 +24,7 @@ namespace Greenlight.Controllers
             return View(company);
         }
 
+
         [HttpPost]
         public ActionResult UpdateCompany(Company org)
         {
@@ -32,7 +34,20 @@ namespace Greenlight.Controllers
 
         public ActionResult Users()
         {
-            return View();
+            var users = _userBizManager.GetUsers();
+            var uvm = new UsersViewModel();
+            uvm.Users = users;
+            return View(uvm);
         }
 	}
+
+    public class UsersViewModel
+    {
+        public UsersViewModel()
+        {
+            
+        }
+
+        public List<User> Users { get; set; } 
+    }
 }
