@@ -20,12 +20,15 @@ namespace Greenlight.Biz.Impl
             var result = _userDao.GetUserAsync(user);
 
             result.Wait();
-            HttpContext.Current.Session["role"] = Enum.GetName(typeof(Role), result.Result.User.Role);
-            HttpContext.Current.Session["currentuser"] = result.Result.User;
-            
-            var company = new Company() {Id = user.Company};
-            company =_companyBizManager.GetCompany(company);
-            HttpContext.Current.Session["currentcompany"] = company;
+            if (result.Result.IsValid)
+            {
+                HttpContext.Current.Session["role"] = Enum.GetName(typeof (Role), result.Result.User.Role);
+                HttpContext.Current.Session["currentuser"] = result.Result.User;
+
+                var company = new Company() {Id = user.Company};
+                company = _companyBizManager.GetCompany(company);
+                HttpContext.Current.Session["currentcompany"] = company;
+            }
 
             return result.Result.IsValid;
         }
