@@ -218,6 +218,7 @@
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.4.0\HELP-US-OUT.txt" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\home.css" />
     <Content Include="Content\images\admin.jpg" />
     <Content Include="Content\images\consumer.jpg" />
     <Content Include="Content\images\Greenlight Logo White.png" />

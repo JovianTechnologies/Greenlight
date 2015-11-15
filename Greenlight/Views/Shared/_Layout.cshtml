@@ -31,7 +31,9 @@
             var company = HttpContext.Current.Session["currentcompany"] as Company;
             var base64 = company.LogoBytes == null ? null : Convert.ToBase64String(company.LogoBytes);
             var imgsrc = base64 == null ? "" : String.Format("data:image/png;base64,{0}", base64);
+            var currentUserRole = HttpContext.Current.Session["role"].ToString();
         }
+
         <div class="body-div">
             <div id="page-container" class="fade page-container page-sidebar-fixed page-header-fixed">
                 <div id="header" class="header navbar navbar-default navbar-fixed-top">
@@ -61,7 +63,7 @@
                                         <span class="">Home</span>
                                     </a>
                                 </li>
-                                <li id="captureLink">
+                                <li id="captureLink" style="display: @(currentUserRole == "Management" || currentUserRole == "Administrator" ? "inline":"none")">
                                     <a href="@Url.Content("~/capture/")">
                                         <i class="fa fa-upload fa-2x"></i>
                                         <span class="">Capture Data</span>
@@ -74,17 +76,17 @@
                                         <span>View and Manage</span>
                                     </a>
                                     <ul class="sub-menu" style="">
-                                        <li id="view"><a href="@Url.Content("~/viewdata/")">View Data</a></li>
-                                        <li id="manage"><a href="@Url.Content("~/viewdata/settings/")">Settings</a></li>
+                                        <li id="view" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" || currentUserRole == "Consumer" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/")">View Data</a></li>
+                                        <li id="manage" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/settings/")">Settings</a></li>
                                     </ul>
                                 </li>
-                                <li id="correctDataLink">
+                                <li id="correctDataLink" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")">
                                     <a href="@Url.Content("~/correctdata/")">
                                         <i class="fa fa-pencil fa-2x"></i>
                                         <span class="">Correct Data</span>
                                     </a>
                                 </li>
-                                <li id="convertToXmlLink">
+                                <li id="convertToXmlLink" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")">
                                     <a href="#">
                                         <i class="fa fa-code fa-2x"></i>
                                         <span class="">Convert To XML</span>
@@ -96,7 +98,7 @@
                                         <span class="">View Reports</span>
                                     </a>
                                 </li>
-                                <li>
+                                <li style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")">
                                     <a href="#">
                                         <i class="fa fa-line-chart fa-2x"></i>
                                         <span class="">Custom Reports</span>
@@ -109,8 +111,8 @@
                                         <span>Administration</span>
                                     </a>
                                     <ul class="sub-menu" style="">
-                                        <li id="company"><a href="@Url.Content("~/administration/company")">Company Information</a></li>
-                                        <li id="users"><a href="@Url.Content("~/administration/users/")">Users</a></li>
+                                        <li id="company" style="display: @(currentUserRole == "Management" || currentUserRole == "Administrator" ? "inline" : "none")"><a href="@Url.Content("~/administration/company")">Company Information</a></li>
+                                        <li id="users" style="display: @(currentUserRole == "Management" || currentUserRole == "Administrator" ? "inline" : "none")"><a href="@Url.Content("~/administration/users/")">Users</a></li>
                                     </ul>
                                 </li>
                             </ul>
