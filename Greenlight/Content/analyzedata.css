@@ -1,0 +1,24 @@
+﻿.dropdown-addon {
+    border-radius: 0 4px 4px 0 !important;
+    border-left: 1px;
+    color: black;
+}
+
+.dropdown-menu{
+    width: 100%;
+    margin: 0;
+}
+
+.ui-datepicker {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+#content{
+    height:100%;
+}
+
+.btn-pos{
+    margin-top: 23px;
+}

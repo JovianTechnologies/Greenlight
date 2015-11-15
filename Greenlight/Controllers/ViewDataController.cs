@@ -19,5 +19,10 @@ namespace Greenlight.Controllers
         {
             return View();
         }
+
+        public ActionResult Analyze()
+        {
+            return View();
+        }
     }
 }

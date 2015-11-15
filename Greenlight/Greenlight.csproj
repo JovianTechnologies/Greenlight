@@ -185,11 +185,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminLTE.min.css" />
+    <Content Include="Content\analyzedata.css" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\capture.css" />
+    <Content Include="Content\classic.css" />
+    <Content Include="Content\classic.date.css" />
+    <Content Include="Content\classic.time.css" />
     <Content Include="Content\correctdata.css" />
+    <Content Include="Content\default.css" />
+    <Content Include="Content\default.date.css" />
     <Content Include="Content\font-awesome-4.4.0\css\font-awesome.css" />
     <Content Include="Content\font-awesome-4.4.0\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
@@ -225,6 +231,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\analyzedata.js" />
     <Content Include="Scripts\apps.min.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -285,6 +292,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pages.js" />
     <Content Include="Scripts\customPrompt.js" />
+    <Content Include="Scripts\picker.date.js" />
+    <Content Include="Scripts\picker.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\rivets.bundled.min.js" />
@@ -326,6 +335,7 @@
     <Content Include="Views\CorrectData\Index.cshtml" />
     <Content Include="Views\ViewData\Index.cshtml" />
     <Content Include="Views\ViewData\Settings.cshtml" />
+    <Content Include="Views\ViewData\Analyze.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,119 @@
+﻿@Styles.Render("~/Content/analyzedata.css")
+@Styles.Render("~/Content/viewdata.css")
+@Styles.Render("~/Content/classic.css")
+@*@Styles.Render("~/Content/classic.date.css")*@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+@Scripts.Render("~/Scripts/picker.js")
+@Scripts.Render("~/Scripts/picker.date.js")
+@Scripts.Render("~/Scripts/analyzedata.js")
+
+
+@{
+    ViewBag.Title = "Analyze Data";
+}
+
+<div class="page-header-container">
+    <h1 class="page-header">Analyze Data</h1>
+</div>
+
+<div class="container-fluid">
+    <label>Select a Time Period</label>
+    <div class="row">
+        <div class="col-md-2">
+            <div id="weekly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Weekly</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="monthly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Monthly</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="quarterly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Quarterly</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="yearly" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">Yearly</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div id="all" class="time-period widget widget-stat bg-inverse text-white">
+                <div class="widget-stat-text">All</div>
+            </div>
+        </div>
+    </div>
+    <div class="section-container section-with-top-border">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="form-group" id="dateContainer" style="position:absolute">
+                    <label>Year Month</label>
+                    <div class='input-group date' >
+                        <input type='text' class="form-control  site-form-input" id='datepicker' /> 
+                        <div class="input-group-addon" id="calendarIcon"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-xs-3 ">
+                <label>Select Report</label>
+                <select id="selectReport" class="form-control  site-form-input">
+                    <option rv-each-report="reportTypes">{ report }</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-lg success-btn btn-margin btn-success btn-pos" id="searchBtn" type="submit">
+                    <i class="fa fa-search"></i>
+                    Search
+                </button>
+                <button class="btn btn-danger btn-lg btn-pos" id="cancelBtn" type="submit">
+                    <i class="fa fa-times"></i>
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row section-container section-with-top-border">
+        <div class="col-md-10">
+            <div class="panel panel-grey">
+                <div class="panel-heading">
+                    Search Results
+                </div>
+                <div id="searchTableContainer" class="no-show table-responsive">
+                    <table id="searchTable" class="table table-bordered table-td-valign-middle">
+                        <thead>
+                            <tr class="grey">
+                                <th>Data Load ID</th>
+                                <th>Data File Name</th>
+                                <th>Report Name</th>
+                                <th>Report Model</th>
+                            </tr>
+                        </thead>
+                        <tbody id="files">
+                            <tr rv-each-file="filesList">
+                                <td>{ file.Id }</td>
+                                <td>{ file.DataFileName }</td>
+                                <td>{ file.ReportName }</td>
+                                <td>{ file.ReportModel }</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-danger btn-lg pull-right no-show" id="cancel2Btn" type="submit">
+                    <i class="fa fa-times"></i>
+                    Cancel
+                </button>
+                <button id="exportBtn" class="btn btn-lg btn-success success-btn pull-right btn-margin no-show">
+                    <i class="fa fa-file-text"></i>
+                    Export
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

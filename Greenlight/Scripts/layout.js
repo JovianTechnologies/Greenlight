@@ -7,6 +7,8 @@
         $("#viewDataLink").addClass("active");
         if (window.location.pathname.indexOf("settings") >= 0) {
             $("#manage").addClass("active");
+        } else if (window.location.pathname.indexOf("analyze") >= 0) {
+            $("#analyze").addClass("active");
         } else {
             $("#view").addClass("active");
         }
