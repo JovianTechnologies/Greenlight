@@ -3,13 +3,14 @@
 ];
 
 var files = [
-{ Id: 4301, "DataFileName": "XYZBANK1025010", "ReportName": "Balance Sheet", "ReportModel": "MatchSubModelBS_110" },
-{ Id: 4301, "DataFileName": "XYZBANK1025012", "ReportName": "Balance Sheet", "ReportModel": "MatchSubModelBS_120" },
-{ Id: 4301, "DataFileName": "XYZBANK1025013", "ReportName": "Balance Sheet", "ReportModel": "MatchSubModelBS_130" },
-{ Id: 4301, "DataFileName": "XYZBANK1025014", "ReportName": "Balance Sheet", "ReportModel": "MatchSubModelBS_140" },
-{ Id: 4301, "DataFileName": "XYZBANK1025015", "ReportName": "Balance Sheet", "ReportModel": "MatchSubModelBS_220" },
-{ Id: 4301, "DataFileName": "XYZBANK1025016", "ReportName": "Balance Sheet", "ReportModel": "MatchSubModelBS_300" },
-]
+    { Id: 4301, "DataFileName": "XYZBANK1025010", "ReportName": "", "ReportModel": "MatchSubModelBS_110" },
+    { Id: 4392, "DataFileName": "XYZBANK1025012", "ReportName": "", "ReportModel": "MatchSubModelBS_120" },
+    { Id: 2303, "DataFileName": "XYZBANK1025013", "ReportName": "", "ReportModel": "MatchSubModelBS_130" },
+    { Id: 4493, "DataFileName": "XYZBANK1025014", "ReportName": "", "ReportModel": "MatchSubModelBS_140" },
+    { Id: 4305, "DataFileName": "XYZBANK1025015", "ReportName": "", "ReportModel": "MatchSubModelBS_220" },
+    { Id: 4306, "DataFileName": "XYZBANK1025016", "ReportName": "", "ReportModel": "MatchSubModelBS_300" }
+];
+
 if (sessionStorage.getItem("configData") == null) {
     var dataObject = { headers: [] }
     sessionStorage.setItem("configData", JSON.stringify(dataObject));
@@ -48,6 +49,13 @@ $(document).ready(function () {
             string += file["Id"] + "," + file["DataFileName"] + "," + file["ReportName"] + "," + file["ReportModel"] + "\n";
         });
         download(Date.now().toString() + ".csv", string);
+    });
+
+    $("#selectReport").change(function() {
+        var text = $("#selectReport :selected").text();
+        _.forEach(model.filesList, function(file) {
+            file.ReportName = text;
+        });
     });
 
     function removeNoShow(element) {
