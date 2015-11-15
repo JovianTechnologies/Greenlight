@@ -26,54 +26,7 @@
     @Scripts.Render("~/Scripts/layout.js")
     @Scripts.Render("~/Scripts/pages.js")
 </head>
-<<<<<<< HEAD
-<body>
-    <div class="body-div">
-        <div id="page-container" class="fade page-container page-sidebar-fixed page-header-fixed">
-            <div id="header" class="header navbar navbar-default navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <img class="logo navbar-brand" src="/Content/images/Greenlight Logo White.png"  />
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown navbar-user">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                @Html.Encode(User.Identity.Name)<b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="sidebar" class="sidebar" style="height: 100%">
-                <div class="slimScrollDiv" style="height: 100%">
-                    <div style="overflow: auto; width: auto; height: 100%">
-                        <ul class="nav" style="margin-top: 10px;">
-                            <li id="homeLink">
-                                <a href="@Url.Content("~/home/")">
-                                    <i class="fa fa-home fa-2x"></i>
-                                    <span class="">Home</span>
-                                </a>
-                            </li>
-                            <li id="captureLink">
-                                <a href="@Url.Content("~/capture/")">
-                                    <i class="fa fa-upload fa-2x"></i>
-                                    <span class="">Capture Data</span>
-                                </a>
-                            </li>
-                            <li id="viewDataLink" class="has-sub">
-                                <a href="#">
-                                    <b class="caret pull-right"></b>
-                                    <i class="fa fa-database fa-2x test"></i>
-                                    <span>View|Manage|Analyze</span>
-                                </a>
-                                <ul class="sub-menu" style="">
-                                    <li id="view"><a href="@Url.Content("~/viewdata/")">View Data</a></li>
-                                    <li id="manage"><a href="@Url.Content("~/viewdata/settings/")">Settings</a></li>
-                                    <li id="analyze"><a href="@Url.Content("~/viewdata/analyze/")">Analyze Data</a></li>
-=======
+
     <body>
         @{
             var company = HttpContext.Current.Session["currentcompany"] as Company;
@@ -96,7 +49,6 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Sign Out", "Logout", "User")</li>
->>>>>>> c62c612bbffb46fc280e4b2e4365a55428b7d791
                                 </ul>
                             </li>
                         </ul>
@@ -126,7 +78,9 @@
                                     </a>
                                     <ul class="sub-menu" style="">
                                         <li id="view" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" || currentUserRole == "Consumer" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/")">View Data</a></li>
+                                        <li id="analyze" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/analyze/")">Analyze Data</a></li>
                                         <li id="manage" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/settings/")">Settings</a></li>
+
                                     </ul>
                                 </li>
                                 <li id="correctDataLink" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")">

@@ -212,13 +212,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\capture.css" />
-<<<<<<< HEAD
     <Content Include="Content\classic.css" />
     <Content Include="Content\classic.date.css" />
     <Content Include="Content\classic.time.css" />
-=======
     <Content Include="Content\company.css" />
->>>>>>> c62c612bbffb46fc280e4b2e4365a55428b7d791
     <Content Include="Content\correctdata.css" />
     <Content Include="Content\default.css" />
     <Content Include="Content\default.date.css" />
@@ -371,13 +368,10 @@
     <Content Include="Views\CorrectData\Index.cshtml" />
     <Content Include="Views\ViewData\Index.cshtml" />
     <Content Include="Views\ViewData\Settings.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\ViewData\Analyze.cshtml" />
-=======
     <Content Include="Views\Administration\users.cshtml" />
     <Content Include="Views\Administration\company.cshtml" />
     <Content Include="Views\Administration\user.cshtml" />
->>>>>>> c62c612bbffb46fc280e4b2e4365a55428b7d791
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
