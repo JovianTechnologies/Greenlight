@@ -63,7 +63,10 @@ rivets.formatters.objectToArrayOfObjects = function (value) {
 
 var ErrorType = {
     timePeriodMissingError: "A time period must be selected",
-    fileMissingError: "A file must be selected"
+    fileMissingError: "A file must be selected",
+    passwordMissingError: "A Password is Required",
+    passwordMatchError: "Passwords do not match, please try again",
+    usernameError: "Username required"
 }
 
 //date formatting utility function

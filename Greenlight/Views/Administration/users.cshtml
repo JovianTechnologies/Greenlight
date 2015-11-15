@@ -34,7 +34,7 @@
                                             <div class="col-md-3">
                                                 <img rv-src="user.Role | roleSrc" style="height: 70px; width: auto"/>
                                             </div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-9">  
                                                 <p>
                                                     <label>{ user.FirstName } { user.LastName }</label>
                                                 </p>
@@ -45,8 +45,18 @@
 
                                 </div>
                                 <div class="col-md-4 user-buttons">
-                                    <button class="btn btn-danger pull-right btn-lg"><i class="fa fa-times"></i> Delete</button>
-                                    <button class="btn btn-warning btn-lg btn-margin pull-right"><i class="fa fa-edit"></i> Edit</button>
+                                    @using (Html.BeginForm("User", "Administration", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="User.Id" rv-value="user.Id" class="id"/>
+                                        <input type="hidden" name="User.FirstName" rv-value="user.FirstName"/>
+                                        <input type="hidden" name="User.LastName" rv-value="user.LastName"/>
+                                        <input type="hidden" name="User.Email" rv-value="user.Email"/>
+                                        <input type="hidden" name="User.Username" rv-value="user.Username"/>
+                                        <input type="hidden" name="User.Company" rv-value="user.Company"/>
+                                        <input type="hidden" name="User.Role" rv-value="user.Role" />
+                                        <button class="btn btn-danger pull-right btn-lg user-delete-btn"><i class="fa fa-times"></i> Delete</button>
+                                        <button class="btn btn-warning btn-lg btn-margin pull-right user-edit-btn"><i class="fa fa-edit"></i> Edit</button>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -55,7 +65,10 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-success btn-lg success-btn pull-right"><i class="fa fa-plus"></i> Add User</button>
+                                @using (Html.BeginForm("User", "Administration", FormMethod.Post, new{id = "addUserForm"}))
+                                {
+                                }
+                                <button id="addUserBtn" class="btn btn-success btn-lg success-btn pull-right"><i class="fa fa-plus"></i> Add User</button>
                             </div>
                         </div>
                     </div>

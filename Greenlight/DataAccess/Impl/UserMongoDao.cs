@@ -50,18 +50,91 @@ namespace Greenlight.DataAccess.Impl
                 foreach (var u in userBson)
                 {
                     var newUser = new User();
-                    newUser.Id = Constants.IdRegex.Match(u.ElementAt(0).Value.RawValue.ToJson()).Value.Substring(1);
-                    newUser.FirstName = u.ElementAt(1).Value.AsString;
-                    newUser.LastName = u.ElementAt(2).Value.AsString;
-                    newUser.Company = Constants.IdRegex.Match(u.ElementAt(3).Value.RawValue.ToJson()).Value.Substring(1);
-                    var rolenumber = (int)u.ElementAt(6).Value.AsDouble;
+                    newUser.Id = Constants.IdRegex.Match(u.Elements.Where(a => a.Name == "_id").ToList()[0].Value.RawValue.ToJson()).Value.Substring(1);
+                    newUser.FirstName = u.Elements.Where(a => a.Name == "firstname").ToList()[0].Value.AsString;
+                    newUser.LastName = u.Elements.Where(a => a.Name == "lastname").ToList()[0].Value.AsString;
+                    newUser.Email = u.Elements.Where(a => a.Name == "email").ToList()[0].Value.AsString;
+                    newUser.Company = Constants.IdRegex.Match(u.Elements.Where(a => a.Name == "company").ToList()[0].Value.RawValue.ToJson()).Value.Substring(1);
+                    newUser.Username = u.Elements.Where(a => a.Name == "username").ToList()[0].Value.AsString;
+                    var rolenumber = (int)u.Elements.Where(a => a.Name == "role").ToList()[0].Value.AsDouble;
                     newUser.Role = (Role)rolenumber;
                     userList.Add(newUser);
+
                 }
                 
             }
             result.Users = userList;
             return result;
+        }
+
+        public async Task<UserValidationResult> CreateUserAsync(User user)
+        {
+            var userDoc = new BsonDocument();
+           
+            foreach (PropertyInfo prop in typeof(User).GetProperties())
+            {
+                if (prop.Name != "Id")
+                {
+                    if (prop.GetValue(user) != null)
+                    {
+                        if (prop.Name == "Role")
+                        {
+                            userDoc.Add(prop.Name.ToLower(), new BsonDouble((int)(prop.GetValue(user) as Role?)));
+                        }
+                        else
+                        {
+                            userDoc.Add(prop.Name.ToLower(), new BsonString(prop.GetValue(user) as string));
+                        }
+                    }
+                    else
+                    {
+                        userDoc.Add(prop.Name.ToLower(), new BsonString(string.Empty));
+                    }   
+                }
+            }
+
+            await _usersCollection.InsertOneAsync(userDoc).ConfigureAwait(false);
+
+            //check to see if user was actually inserted
+             var result = await  GetUsersAsync(user);
+
+            return result;
+        }
+
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(user.Id));
+            
+            var update = Builders<BsonDocument>.Update;
+            var updateList = new List<UpdateDefinition<BsonDocument>>();
+            foreach (PropertyInfo prop in typeof(User).GetProperties())
+            {
+                if (prop.Name != "Company" && prop.Name != "Id" && !(prop.Name == "Password" && prop.GetValue(user) == null))
+                {
+                    if (prop.GetValue(user) == null)
+                    {
+                        updateList.Add(update.Set(prop.Name.ToLower(), ""));
+                    }
+                    else
+                    {
+                        var value = prop.Name == "Role" ? (double)(prop.GetValue(user) as Role?) : prop.GetValue(user);
+                        updateList.Add(update.Set(prop.Name.ToLower(), value));
+                    }
+                }
+            }
+
+            await _usersCollection.UpdateOneAsync(filter, update.Combine(updateList)).ConfigureAwait(false);
+
+            return user;
+        }
+
+        public async  Task<bool> DeleteUserAsync(User user)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(user.Id));
+
+            await _usersCollection.DeleteOneAsync(filter).ConfigureAwait(false);
+
+            return true;
         }
     }
 }

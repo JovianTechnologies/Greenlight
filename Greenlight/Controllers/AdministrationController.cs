@@ -45,7 +45,35 @@ namespace Greenlight.Controllers
         }
 
         [RoleAuthorize(Roles = "Management,Administrator")]
-    private User 
+        public ActionResult User(User user)
+        {
+            if(user == null) user = new User();
+
+            return View(user);
+        }
+
+        [RoleAuthorize(Roles = "Management,Administrator")]
+        public ActionResult SaveUser(User user)
+        {
+            if (user.Id == null)
+            {
+                _userBizManager.CreateUser(user);
+            }
+            else
+            {
+                _userBizManager.UpdateUser(user);
+            }
+
+            return RedirectToAction("Users");
+        }
+
+        [RoleAuthorize(Roles = "Management,Administrator")]
+        public ActionResult DeleteUser(User user)
+        {
+            _userBizManager.DeleteUser(user);
+
+            return RedirectToAction("Users");
+        }
 	}
 
     public class UsersViewModel
@@ -55,7 +83,9 @@ namespace Greenlight.Controllers
             
         }
 
-        public List<User> Users { get; set; } 
+        public List<User> Users { get; set; }
+
+        public User User { get; set; }
     }
 
     

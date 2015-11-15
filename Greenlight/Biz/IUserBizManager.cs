@@ -12,5 +12,8 @@ namespace Greenlight.Biz
         bool ValidateUser(User user);
         User GetUser(User user);
         List<User> GetUsers();
+        User CreateUser(User user);
+        User UpdateUser(User user);
+        void DeleteUser(User user);
     }
 }

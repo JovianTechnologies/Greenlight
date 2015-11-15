@@ -47,5 +47,29 @@ namespace Greenlight.Biz.Impl
 
             return users;
         }
+
+        public User CreateUser(User user)
+        {
+            user.Company = (HttpContext.Current.Session["currentcompany"] as Company).Id;
+            var result = _userDao.CreateUserAsync(user);
+            result.Wait();
+
+            user = result.Result.Users.First();
+            return user;
+        }
+
+        public User UpdateUser(User user)
+        {
+            var result = _userDao.UpdateUserAsync(user);
+            result.Wait();
+
+            user = result.Result;
+            return user;
+        }
+
+        public void DeleteUser(User user)
+        {
+            _userDao.DeleteUserAsync(user).Wait();
+        }
     }
 }

@@ -22,11 +22,11 @@
         case 0:
             return "../../Content/images/management.jpg";
         case 1:
-            return "Administrator";
+            return "../../Content/images/admin.jpg";
         case 2:
-            return "Reg - Reporter";
+            return "../../Content/images/reporter.jpg";
         default:
-            return "Report Consumer";
+            return "../../Content/images/consumer.jpg";
         }
     }
     rivets.formatters.searchUsers = function (term) {
@@ -38,7 +38,39 @@
         return term;
     }
 
- 
-
     var view = rivets.bind($('body'), model);
+
+    $("#addUserBtn").click(function () {
+        $('#addUserForm').submit();
+    });
+
+    $(".user-delete-btn").click(function () {
+        var idElement = _.find($(this).siblings(), function(el) { return $(el).hasClass("id") });
+        var user = { Id: $(idElement).val() };
+
+        customPrompt.create({
+            isPrompt: true,
+            messageTitle: "DELETE",
+            message: "This action cannot be undone",
+            bgcolor: "#E2747E",
+            buttonClass: "btn btn-danger",
+            buttonText: "Delete",
+            iconClass: "fa-times-circle-o",
+            success: function () {
+                $.ajax({
+                    type: "POST",
+                    url: '../DeleteUser',
+                    data: JSON.stringify(user),
+                    contentType: 'application/json',
+                    success: function (result) {
+                        location.reload();
+                    }
+                });
+            }
+        });
+        
+
+        return false;
+    });
+
 });

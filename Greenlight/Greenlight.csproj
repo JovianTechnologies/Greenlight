@@ -321,6 +321,7 @@
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\ui.core.js" />
     <Content Include="Scripts\ui.progressbar.js" />
+    <Content Include="Scripts\user.js" />
     <Content Include="Scripts\users.js" />
     <Content Include="Scripts\viewdata.js" />
     <Content Include="Scripts\_references.js" />
@@ -359,6 +360,7 @@
     <Content Include="Views\ViewData\Settings.cshtml" />
     <Content Include="Views\Administration\users.cshtml" />
     <Content Include="Views\Administration\company.cshtml" />
+    <Content Include="Views\Administration\user.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
