@@ -1,0 +1,146 @@
+﻿@model Greenlight.Models.Company
+
+@{
+    ViewBag.Title = "Company Information";
+    
+}
+
+@Styles.Render("~/Content/company.css")
+
+@Scripts.Render("~/Scripts/lodash.js")
+@Scripts.Render("~/Scripts/company.js")
+
+<div class="page-header-container">
+    <h1 class="page-header">Company Information</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("UpdateCompany", "Administration", FormMethod.Post, new {enctype = "multipart/form-data"}))
+            {
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Name)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Name, new {@class = "form-control", id="companyName"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Phone)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", id = "phoneNumber" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Country)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Country, new {enctype = "multipart/form-data" , @class = "form-control", id = "country" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Logo)
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" id="companyLogoProxy" name="companyLogoProxy" class="form-control" />
+                                @Html.TextBoxFor(model => model.Logo, new { type = "file", id = "companyLogo", name = "companyLogo", style="display: none"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Address1)
+                            </div>
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.Address1, new { @class = "form-control", id = "address1" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Address2)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Address2, new { @class = "form-control", id = "address2" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.City)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.City, new { @class = "form-control", id = "city" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.StateZip)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.StateZip, new { @class = "form-control", id = "statezip" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Contact)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Contact, new { @class = "form-control", id = "contact" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Email)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id = "email" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <button id="cancelBtn" class="btn btn-danger pull-right" rv-class-hide="isEditMode | oppositeBool">
+                            Cancel
+                        </button>
+                        <input type="submit" id="saveBtn" class="btn btn-success success-btn btn-margin pull-right" rv-class-hide="isEditMode | oppositeBool" value="Save" />
+                            
+                        <button id="editBtn"class="btn btn-warning pull-right btn-margin" rv-class-hide="isEditMode">
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -11,8 +11,6 @@ namespace Greenlight.Models
 {
     public class User
     {
-        private readonly IUserDao _userDao = new UserMockDao();
-
         [Required]
         [Display(Name = "User name")]
         public string Username { get; set; }
@@ -22,14 +20,21 @@ namespace Greenlight.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        /// <summary>
-        /// Check if the user exists, and has the proper credentials
-        /// </summary>
-        /// <returns>boolean</returns>
-        public bool IsValid(string username, string password)
-        {
-            return _userDao.ValidateUser(username, password);
-        }
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
 
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "E-mail Address")]
+        public string Email { get; set; }
+
+        public string Company { get; set; }
+
+        [Display(Name = "Role")]
+        public Role? Role { get; set; }
+
+        [Display(Name = "")]
+        public String Id { get; set; }
     }
 }

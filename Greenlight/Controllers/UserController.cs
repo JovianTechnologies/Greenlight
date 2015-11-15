@@ -4,16 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Greenlight.Biz;
+using Greenlight.Biz.Impl;
+using Greenlight.CustomAttributes;
 
 namespace Greenlight.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
-//        public ActionResult Index()
-//        {
-//            return View();
-//        }
+        private readonly IUserBizManager _userBizManager = new UserBizManager();
 
         [HttpGet]
         public ActionResult Login()
@@ -26,7 +25,7 @@ namespace Greenlight.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (user.IsValid(user.Username, user.Password))
+                if (_userBizManager.ValidateUser(user))
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, true);
                     return RedirectToAction("Index", "Home");

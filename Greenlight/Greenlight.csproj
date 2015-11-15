@@ -46,6 +46,15 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.1.0\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\MongoDB.Driver.2.1.0\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.1.0\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -164,21 +173,34 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Biz\ICompanyBizManager.cs" />
+    <Compile Include="Biz\Impl\CompanyBizManager.cs" />
+    <Compile Include="Biz\Impl\UserBizManager.cs" />
+    <Compile Include="Biz\IUserBizManager.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\CaptureController.cs" />
     <Compile Include="Controllers\CorrectDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ViewDataController.cs" />
+    <Compile Include="CustomAttributes\RoleAuthorizeAttribute.cs" />
+    <Compile Include="DataAccess\ICompanyDao.cs" />
+    <Compile Include="DataAccess\Impl\CompanyMongoDao.cs" />
     <Compile Include="DataAccess\Impl\UserMockDao.cs" />
+    <Compile Include="DataAccess\Impl\UserMongoDao.cs" />
     <Compile Include="DataAccess\IUserDAO.cs" />
     <Compile Include="Data\UserData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserValidationResult.cs" />
     <Compile Include="ProgressHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -190,9 +212,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\capture.css" />
+<<<<<<< HEAD
     <Content Include="Content\classic.css" />
     <Content Include="Content\classic.date.css" />
     <Content Include="Content\classic.time.css" />
+=======
+    <Content Include="Content\company.css" />
+>>>>>>> c62c612bbffb46fc280e4b2e4365a55428b7d791
     <Content Include="Content\correctdata.css" />
     <Content Include="Content\default.css" />
     <Content Include="Content\default.date.css" />
@@ -201,10 +227,16 @@
     <Content Include="Content\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome-4.4.0\HELP-US-OUT.txt" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\home.css" />
+    <Content Include="Content\images\admin.jpg" />
+    <Content Include="Content\images\consumer.jpg" />
     <Content Include="Content\images\Greenlight Logo White.png" />
     <Content Include="Content\images\Greenlight_Full.png" />
     <Content Include="Content\images\Greenwave.png" />
     <Content Include="Content\images\GreenwaveTransparent.jpg" />
+    <Content Include="Content\images\management.jpg" />
+    <Content Include="Content\images\reporter.jpg" />
+    <Content Include="Content\images\search-icon-md.png" />
     <Content Include="Content\pages.css" />
     <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -226,6 +258,7 @@
     <Content Include="Content\login.css" />
     <Content Include="Content\settings.css" />
     <Content Include="Content\style.min.css" />
+    <Content Include="Content\users.css" />
     <Content Include="Content\viewdata.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -271,6 +304,7 @@
     <None Include="Properties\PublishProfiles\Greenlight.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\capture.js" />
+    <Content Include="Scripts\company.js" />
     <Content Include="Scripts\correctdata.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -300,6 +334,8 @@
     <Content Include="Scripts\settings.js" />
     <Content Include="Scripts\ui.core.js" />
     <Content Include="Scripts\ui.progressbar.js" />
+    <Content Include="Scripts\user.js" />
+    <Content Include="Scripts\users.js" />
     <Content Include="Scripts\viewdata.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -335,7 +371,13 @@
     <Content Include="Views\CorrectData\Index.cshtml" />
     <Content Include="Views\ViewData\Index.cshtml" />
     <Content Include="Views\ViewData\Settings.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\ViewData\Analyze.cshtml" />
+=======
+    <Content Include="Views\Administration\users.cshtml" />
+    <Content Include="Views\Administration\company.cshtml" />
+    <Content Include="Views\Administration\user.cshtml" />
+>>>>>>> c62c612bbffb46fc280e4b2e4365a55428b7d791
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

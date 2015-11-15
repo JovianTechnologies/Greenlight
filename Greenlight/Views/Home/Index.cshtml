@@ -1,9 +1,21 @@
-﻿
+﻿@using System.Configuration
+@using Greenlight.Models
+
+@Styles.Render("~/Content/home.css")
 
 @{
     ViewBag.Title = "Home";
+    var company = HttpContext.Current.Session["currentcompany"] as Company;
 }
 
 <div class="page-header-container">
     <h1 class="page-header">Home</h1>
 </div>
+
+<div class="container-fluid">
+    <h3>Company Name</h3>
+    <h4>@(company.Name)</h4>
+    <h5>Application Version</h5>
+    <h5>@(ConfigurationManager.AppSettings["version"])</h5>
+</div>
+

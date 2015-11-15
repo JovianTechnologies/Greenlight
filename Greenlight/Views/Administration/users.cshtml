@@ -1,0 +1,79 @@
+﻿@model Greenlight.Controllers.UsersViewModel
+
+@Styles.Render("~/Content/users.css")
+@Scripts.Render("~/Scripts/users.js")
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<script>
+    var users = @Html.Raw(Json.Encode(Model.Users))
+</script>
+<div class="page-header-container">
+    <h1 class="page-header">Users</h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-grey">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input id="searchbox" class="form-control pull-right" rv-value="searchTerm | searchUsers"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div rv-each-user="filteredUsers">
+                        <div class="container">
+                            <div class=row>
+                                <div class="col-md-8" rv-id="user.Id">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img rv-src="user.Role | roleSrc" style="height: 70px; width: auto"/>
+                                            </div>
+                                            <div class="col-md-9">  
+                                                <p>
+                                                    <label>{ user.FirstName } { user.LastName }</label>
+                                                </p>
+                                                { user.Role | role}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 user-buttons">
+                                    @using (Html.BeginForm("User", "Administration", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="User.Id" rv-value="user.Id" class="id"/>
+                                        <input type="hidden" name="User.FirstName" rv-value="user.FirstName"/>
+                                        <input type="hidden" name="User.LastName" rv-value="user.LastName"/>
+                                        <input type="hidden" name="User.Email" rv-value="user.Email"/>
+                                        <input type="hidden" name="User.Username" rv-value="user.Username"/>
+                                        <input type="hidden" name="User.Company" rv-value="user.Company"/>
+                                        <input type="hidden" name="User.Role" rv-value="user.Role" />
+                                        <button class="btn btn-danger pull-right btn-lg user-delete-btn"><i class="fa fa-times"></i> Delete</button>
+                                        <button class="btn btn-warning btn-lg btn-margin pull-right user-edit-btn"><i class="fa fa-edit"></i> Edit</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @using (Html.BeginForm("User", "Administration", FormMethod.Post, new{id = "addUserForm"}))
+                                {
+                                }
+                                <button id="addUserBtn" class="btn btn-success btn-lg success-btn pull-right"><i class="fa fa-plus"></i> Add User</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

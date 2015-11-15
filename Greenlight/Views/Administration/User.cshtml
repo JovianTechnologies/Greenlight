@@ -1,0 +1,121 @@
+﻿@using Greenlight.Models
+@model Greenlight.Models.User
+
+@*@Styles.Render("~/Content/users.css")*@
+@Scripts.Render("~/Scripts/user.js")
+
+@{
+    ViewBag.Title = "title";
+}
+
+<script>
+    var user = @Html.Raw(Json.Encode(Model))
+</script>
+<div class="page-header-container">
+    <h1 class="page-header">User Details</h1>
+</div>
+
+<div class="container-fluid">
+    <div class=" = row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("SaveUser", "Administration", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.Id)
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.FirstName)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.FirstName, new {@class = "form-control"})
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.LastName)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.LastName, new {@class = "form-control"})
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Email)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Email, new {@class = "form-control"})
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Username)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control", id = "username" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Role)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.DropDownListFor(model => model.Role, new List<SelectListItem>
+                            {
+                                new SelectListItem() {Text = "Management", Value = Enum.GetName(typeof (Role), Role.Management)},
+                                new SelectListItem() {Text = "Administrator", Value = Enum.GetName(typeof (Role), Role.Administrator)},
+                                new SelectListItem() {Text = "Reg - Reporter", Value = Enum.GetName(typeof (Role), Role.Reporter)},
+                                new SelectListItem() {Text = "Report Consumer", Value = Enum.GetName(typeof (Role), Role.Consumer)}
+
+                            }, new {@class = "form-control"})
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Password)
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Password, new {@class = "form-control", type = "password", id = "password"})
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-3">
+                            @Html.Label("Confirm Password")
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password", id = "passwordConfirm" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <button id="saveBtn" class="btn btn-success success-btn btn-lg"><i class="fa fa-floppy-o"></i> Save</button>
+                        <button id="clearBtn" class="btn btn-danger btn-lg"><i class="fa fa-minus"></i> Clear Form</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-lg-8">
+            <div id="errors" class="errors" rv-hide="errors | isEmpty">
+                <span class="error-label">Errors</span>
+                <ul id="errorList" class="error-list error-content">
+                    <li rv-each-error="errors">{ error }</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+

@@ -15,16 +15,39 @@
     }
     else if (window.location.pathname.indexOf("correctdata") >= 0) {
         $("#correctDataLink").addClass("active");
-    } else {
+    } else if(window.location.pathname.indexOf("administration") >= 0){
+        $("#adminLink").addClass("active");
+        if (window.location.pathname.indexOf("company") >= 0) {
+            $("#company").addClass("active");
+        } else {
+            $("#users").addClass("active");
+        }
+    }else {
         $("#homeLink").addClass("active");
     }
 
-    $(document).resize(function() {
-        $('.body-div').height(document.height);
+    $('#adminLink').click(function () {
+        setTimeout(adjustLogoContainerHeight, 500);
+    });
+
+    $('#viewDataLink').click(function () {
+        setTimeout(adjustLogoContainerHeight, 500);
+    });
+
+    $(window).resize(function() {
+        adjustLogoContainerHeight();
     });
 
     $(".sub-menu > li").on('click', function() {
         $(this).addClass('active').siblings().removeClass("active");
     });
+
+    adjustLogoContainerHeight();
+    function adjustLogoContainerHeight() {
+        $('.logodiv').width($('#sidebar').width())
+        $('.logodiv').height($('#sidebar').height()
+                             - parseInt($('#sidebar').css("padding-top").replace("px", ""))
+                             - $('#navMenu').height());
+    }
 });
 

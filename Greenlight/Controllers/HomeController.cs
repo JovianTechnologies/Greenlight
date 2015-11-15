@@ -3,28 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Greenlight.CustomAttributes;
+using Greenlight.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace Greenlight.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
+        [RoleAuthorize(Roles = "Management,Administrator,Reporter,Consumer")]
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
