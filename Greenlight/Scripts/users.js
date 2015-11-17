@@ -59,7 +59,7 @@
             success: function () {
                 $.ajax({
                     type: "POST",
-                    url: '../DeleteUser',
+                    url: '/Administration/DeleteUser',
                     data: JSON.stringify(user),
                     contentType: 'application/json',
                     success: function (result) {

@@ -7,9 +7,7 @@
         $("#viewDataLink").addClass("active");
         if (window.location.pathname.indexOf("settings") >= 0) {
             $("#manage").addClass("active");
-        } else if (window.location.pathname.indexOf("analyze") >= 0) {
-            $("#analyze").addClass("active");
-        } else {
+        }  else {
             $("#view").addClass("active");
         }
     }
@@ -19,6 +17,8 @@
         $("#adminLink").addClass("active");
         if (window.location.pathname.indexOf("company") >= 0) {
             $("#company").addClass("active");
+        } else if (window.location.pathname.indexOf("analyze") >= 0) {
+            $("#analyze").addClass("active");
         } else {
             $("#users").addClass("active");
         }
@@ -44,7 +44,8 @@
 
     adjustLogoContainerHeight();
     function adjustLogoContainerHeight() {
-       $('.logodiv').width($('#sidebar').width());
+        $('.logodiv').width($('#sidebar').width());
+
         $('.logodiv').height(($('#sidebar').height()
                              - parseInt($('#sidebar').css("padding-top").replace("px", ""))
                             - $('#navMenu').height()) * .7);
