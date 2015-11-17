@@ -18,6 +18,11 @@ $(document).ready(function () {
         return false;
     });
 
+    $('#cancelBtn').click(function() {
+        window.location("/administration/users");
+        return false;
+    });
+
     function validate() {
         if ($("#password").val() === "" && model.errors.indexOf(ErrorType.passwordMissingError) === -1 && user.Id === "") {
             model.errors.push(ErrorType.passwordMissingError);

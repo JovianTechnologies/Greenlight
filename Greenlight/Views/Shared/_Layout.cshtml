@@ -57,7 +57,7 @@
                 <div id="sidebar" class="sidebar" style="height: 100%">
                     <div class="slimScrollDiv" style="height: 100%">
                         <div style="overflow: auto; width: auto; height: 100%">
-                            <ul id="navMenu" class="nav" style="margin-top: 10px;">
+                            <ul id="navMenu" class="nav" style="margin-top: 10px;margin-bottom: 25px;">
                                 <li id="homeLink">
                                     <a href="@Url.Content("~/home/")">
                                         <i class="fa fa-home fa-2x"></i>
@@ -78,7 +78,6 @@
                                     </a>
                                     <ul class="sub-menu" style="">
                                         <li id="view" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" || currentUserRole == "Consumer" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/")">View Data</a></li>
-                                        <li id="analyze" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/analyze/")">Analyze Data</a></li>
                                         <li id="manage" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")"><a href="@Url.Content("~/viewdata/settings/")">Settings</a></li>
 
                                     </ul>
@@ -116,11 +115,12 @@
                                     <ul class="sub-menu" style="">
                                         <li id="company" style="display: @(currentUserRole == "Management" || currentUserRole == "Administrator" ? "inline" : "none")"><a href="@Url.Content("~/administration/company")">Company Information</a></li>
                                         <li id="users" style="display: @(currentUserRole == "Management" || currentUserRole == "Administrator" ? "inline" : "none")"><a href="@Url.Content("~/administration/users/")">Users</a></li>
+                                        <li id="analyze" style="display: @(currentUserRole == "Management" || currentUserRole == "Reporter" ? "inline" : "none")"><a href="@Url.Content("~/administration/analyze/")">Analyze Data</a></li>
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="logodiv" style="width:100%; height: 100px;">
-                                <img src="@imgsrc" style="width: 90%; height: auto"/>
+                            <div class="logodiv" style="width:100%;">
+                                <img src="@imgsrc" style="width: 80%; height: auto"/>
                             </div>
                         </div>
                     </div>

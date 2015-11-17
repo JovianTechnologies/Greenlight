@@ -44,10 +44,10 @@
 
     adjustLogoContainerHeight();
     function adjustLogoContainerHeight() {
-        $('.logodiv').width($('#sidebar').width())
-        $('.logodiv').height($('#sidebar').height()
+       $('.logodiv').width($('#sidebar').width());
+        $('.logodiv').height(($('#sidebar').height()
                              - parseInt($('#sidebar').css("padding-top").replace("px", ""))
-                             - $('#navMenu').height());
+                            - $('#navMenu').height()) * .7);
     }
 });
 

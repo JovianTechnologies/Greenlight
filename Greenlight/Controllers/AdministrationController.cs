@@ -74,6 +74,13 @@ namespace Greenlight.Controllers
 
             return RedirectToAction("Users");
         }
+
+        [RoleAuthorize(Roles = "Management,Administrator")]
+        public ActionResult Analyze(User user)
+        {
+
+            return View();
+        }
 	}
 
     public class UsersViewModel
