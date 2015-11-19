@@ -45,7 +45,7 @@
     });
 
     $(".user-delete-btn").click(function () {
-        var idElement = _.find($(this).siblings(), function(el) { return $(el).hasClass("id") });
+        var idElement = _.find($(this).siblings(), function(el) { return $(el).hasClass("id"); });
         var user = { Id: $(idElement).val() };
 
         customPrompt.create({
@@ -68,7 +68,6 @@
                 });
             }
         });
-        
 
         return false;
     });
