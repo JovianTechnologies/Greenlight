@@ -31,8 +31,8 @@
     }
     rivets.formatters.searchUsers = function (term) {
         model.filteredUsers= _.filter(model.users, function (user) {
-            return user.FirstName.indexOf(model.searchTerm) >= 0
-                    || user.FirstName.indexOf(model.searchTerm) >= 0;
+            return user.FirstName.toLowerCase().indexOf(model.searchTerm.toLowerCase()) >= 0
+                    || user.LastName.toLowerCase().indexOf(model.searchTerm.toLowerCase()) >= 0;
         });
 
         return term;
