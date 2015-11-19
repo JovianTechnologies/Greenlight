@@ -368,10 +368,10 @@
     <Content Include="Views\CorrectData\Index.cshtml" />
     <Content Include="Views\ViewData\Index.cshtml" />
     <Content Include="Views\ViewData\Settings.cshtml" />
-    <Content Include="Views\ViewData\Analyze.cshtml" />
     <Content Include="Views\Administration\users.cshtml" />
     <Content Include="Views\Administration\company.cshtml" />
     <Content Include="Views\Administration\user.cshtml" />
+    <Content Include="Views\Administration\Analyze.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
