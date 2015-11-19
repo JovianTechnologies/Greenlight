@@ -27,28 +27,25 @@
     }
 
     $('#adminLink').click(function () {
-        setTimeout(adjustLogoContainerHeight, 500);
+        setTimeout(adjustLogoContainerWidth, 500);
     });
 
     $('#viewDataLink').click(function () {
-        setTimeout(adjustLogoContainerHeight, 500);
+        setTimeout(adjustLogoContainerWidth, 500);
     });
 
     $(window).resize(function() {
-        adjustLogoContainerHeight();
+        adjustLogoContainerWidth();
     });
 
     $(".sub-menu > li").on('click', function() {
         $(this).addClass('active').siblings().removeClass("active");
     });
 
-    adjustLogoContainerHeight();
-    function adjustLogoContainerHeight() {
-        $('.logodiv').width($('#sidebar').width());
+    adjustLogoContainerWidth();
+    function adjustLogoContainerWidth() {
+        $('.logo-div-container').width($('#sidebar').width());
 
-        $('.logodiv').height(($('#sidebar').height()
-                             - parseInt($('#sidebar').css("padding-top").replace("px", ""))
-                            - $('#navMenu').height()) * .7);
     }
 });
 
