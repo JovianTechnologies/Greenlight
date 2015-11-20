@@ -51,8 +51,8 @@ li.active > a > i {
 
 .logodiv {
     text-align: center;
-    width: 70%;
-    background: white;
+    width: 160px;
+    height: 160px;
     position: relative;
     right: 0;
     left: 0;
